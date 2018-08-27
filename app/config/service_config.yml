@@ -1,0 +1,26 @@
+parameters:    
+   # aakrib_api: "http://104.239.168.71/aakron-api/web/"
+    aakrib_api: "http://localhost/aakron-api/web/app_dev.php/"
+    aakrib_api_access_key: '10838aeb-14d1-46a7-b624-bdf26182dba9' 
+    aakrib_api_get_netprice: "%aakrib_api%product-price-grid"
+    aakron.solr.url: "http://www.aakronline.com:8085/solr/aakronline_live_us/select?"
+    aakron.crm.username: "admin"
+    aakron.crm.userapikey: "029d48cdd7ae2253e266f0c85a2fc0059079d6be"
+    contacts.source.url: "%aakrib_api%contact?_format=json"
+    customers.source.url: "%aakrib_api%customer?_format=json"
+    contacts.destination.url: "http://dev.aakroncrm.com/admin/api/contacts"
+    accounts.destination.url: "http://dev.aakroncrm.com/admin/api/accounts"
+    customer.destination.url: "http://dev.aakroncrm.com/admin/api/customers"
+    customeruser.destination.url: "http://dev.aakroncrm.com/admin/api/customer_users"
+    customeruser_address.destination.url: "http://dev.aakroncrm.com/admin/api/customer_user_addresses"
+       
+     
+services:
+    aakron_import_contact_api:
+        class: 'Aakron\Bundle\CscApiBundle\Manager\ContactSyncManager'
+        arguments: ["@kernel","%contacts.destination.url%","%contacts.source.url%","%aakron.crm.username%","%aakron.crm.userapikey%"] 
+
+    aakron_import_customer_api:
+        class: 'Aakron\Bundle\CscApiBundle\Manager\CustomerSyncManager'
+        arguments: ["@kernel"]         
+

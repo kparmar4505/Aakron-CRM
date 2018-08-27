@@ -1,0 +1,2 @@
+#bundles:
+#    - { name: Aakron\Bundle\SaleBundle\AakronSaleBundle, priority: 1 }

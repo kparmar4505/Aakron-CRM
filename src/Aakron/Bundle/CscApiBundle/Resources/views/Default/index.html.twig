@@ -1,0 +1,28 @@
+{#{% set options = {
+    placeholder: 'Select one ...',
+    allowClear: true
+} %}
+
+
+<select
+    data-page-component-module="aakroncscapi/js/app/components/select2-component"
+    data-page-component-options="{{ options|json_encode }}">
+    <option value="foo">Foo</option>
+    <option value="bar">Bar</option>
+</select>
+  #}
+
+{% set options = {
+    view: 'aakroncscapi/js/app/views/select2-view',
+    placeholder: 'Select one ...',
+    allowClear: true
+} %}
+
+
+<select
+    data-page-component-module="oroui/js/app/components/view-component"
+    data-page-component-options="{{ options|json_encode }}">
+    <option value="foo">Foo</option>
+    <option value="bar">Bar</option>
+    <option value="bar">Barcod</option>
+</select>

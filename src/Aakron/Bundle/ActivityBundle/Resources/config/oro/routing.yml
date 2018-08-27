@@ -1,0 +1,8 @@
+aakron_activity:
+    resource: "@AakronActivityBundle/Controller/"
+    type:     annotation
+    prefix:   /
+aakron_activity_parent_bundle:
+    resource: "@!OroActivityBundle/Controller/"
+    type:     annotation
+    prefix:   /

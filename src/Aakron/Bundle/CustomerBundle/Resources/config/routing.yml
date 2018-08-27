@@ -1,0 +1,3 @@
+aakron_customer_homepage:
+    path:     /
+    defaults: { _controller: AakronCustomerBundle:Default:index }

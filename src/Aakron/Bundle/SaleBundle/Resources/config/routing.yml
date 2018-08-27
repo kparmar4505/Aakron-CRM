@@ -1,0 +1,3 @@
+#aakron_sale_homepage:
+#    path:     /
+#    defaults: { _controller: AakronSaleBundle:Default:index }

@@ -1,0 +1,19 @@
+aakron_lead:
+    resource: "@AakronSaleBundle/Controller/"
+    type:     annotation
+    prefix:   /
+aakron_lead_parent_bundle:
+    resource: "@!OroSalesBundle/Controller/"
+    type:     annotation
+    prefix:   /
+#    
+
+#        
+#oro_sale_quote:
+#    resource:     '@!OroSaleBundle/Controller/QuoteController.php'
+#    type:         annotation
+#    prefix:       /sale/quote    
+#aakron_sale_quote:
+#    resource:     '@AakronSaleBundle/Controller/QuoteController.php'
+#    type:         annotation
+#    prefix:       /sale/quote    

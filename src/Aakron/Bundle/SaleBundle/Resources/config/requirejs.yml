@@ -1,0 +1,3 @@
+config:
+    paths:
+        'orosale/js/app/views/line-item-view': 'bundles/aakronsale/js/app/views/line-item-view.js'

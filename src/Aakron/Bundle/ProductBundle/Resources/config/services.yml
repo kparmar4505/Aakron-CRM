@@ -1,0 +1,19 @@
+#parameters:
+#    oro_product.entity.product.class: Oro\Bundle\ProductBundle\Entity\Product
+#services: 
+#    oro_product.autocomplete.product_visibility_limited.search_handler:
+#        class: 'Aakron\Bundle\ProductBundle\Autocomplete\ProductVisibilityLimitedSearchHandler'
+#        public: false
+#        arguments:
+#            - '%oro_product.entity.product.class%'
+#            - { search: {sku: "sku", name: "defaultName.string"}, orm: {sku: "sku", defaultName.string: "defaultName.string"}}
+#            - "@request_stack"
+#            - "@oro_product.product.manager"
+#            - "@kernel"
+#        calls:
+#            - [initDoctrinePropertiesByManagerRegistry, ["@doctrine"]]
+#            - [setAclHelper,["@oro_security.acl_helper"]]
+#            - [setFrontendHelper,["@oro_frontend.request.frontend_helper"]]
+#            - [setSearchRepository,["@oro_product.website_search.repository.product"]]
+#        tags:
+#            - { name: oro_form.autocomplete.search_handler, alias: "oro_product_visibility_limited" }

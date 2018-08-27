@@ -1,0 +1,3 @@
+aakron_activity_homepage:
+    path:     /
+    defaults: { _controller: AakronActivityBundle:Default:index }

@@ -1,0 +1,3 @@
+aakron_product_homepage:
+    path:     /
+    defaults: { _controller: AakronProductBundle:Default:index }

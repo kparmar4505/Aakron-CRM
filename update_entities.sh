@@ -1,0 +1,9 @@
+sudo php app/console --env=prod cache:clear  --no-debug
+sudo php app/console --env=prod oro:migration:load --force
+sudo php app/console --env=prod doctrine:schema:update --force
+sudo php app/console --env=prod oro:entity-extend:update-config
+sudo php app/console --env=prod oro:entity-extend:update-schema
+sudo php app/console --env=prod oro:entity-extend:cache:clear
+sudo php app/console  --env=prod oro:entity-config:update
+sudo php app/console --env=prod cache:clear  --no-debug
+sudo php app/console --env=prod oro:platform:update  --force
