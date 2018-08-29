@@ -16,7 +16,8 @@ class AppKernel extends OroKernel
             new Aakron\Bundle\ActivityBundle\AakronActivityBundle(),
             new Aakron\Bundle\ProductBundle\AakronProductBundle(),
             new Aakron\Bundle\PricingBundle\AakronPricingBundle(),
-            new Aakron\Bundle\CustomerBundle\AakronCustomerBundle(),            
+            new Aakron\Bundle\CustomerBundle\AakronCustomerBundle(),
+            new Ibnab\Bundle\PmanagerBundle\IbnabPmanagerBundle(),
         );
 
         if ('dev' === $this->getEnvironment()) {

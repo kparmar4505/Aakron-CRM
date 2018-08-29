@@ -1,0 +1,2 @@
+ID,"Name Prefix","First Name","Middle Name","Last Name","Name Suffix",Birthday,"Email Address","Customer Id","Customer Name","Roles 1 Role",Guest,Enabled,Confirmed,"Owner Id","Website Id"
+,Mr,Jerry,John,Coleman,Jr.,04/19/1987,example@email.com,,"Oro Inc.",ROLE_FRONTEND_BUYER,0,1,0,1,1

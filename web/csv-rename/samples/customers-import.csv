@@ -1,0 +1,2 @@
+Id,Name,"Parent Id","Group Name","Owner Id","Tax code","Account Id",account_number,"Payment term Label","Internal rating Id"
+1,"Company A - East Division",,"All Customers",1,Tax_code_1,1,,"net 90",1_of_5

@@ -38,6 +38,7 @@ twig:
     strict_variables:         "%kernel.debug%"
     exception_controller:     "FOS\RestBundle\Controller\ExceptionController::showAction"
     globals:
+        aakron_crm_url: "%aakron_crm_url%"
         bap:
             layout:           ::base.html.twig  # default layout across all Oro bundles
 
@@ -154,3 +155,18 @@ oro_message_queue:
         default: '%message_queue_transport%'
         '%message_queue_transport%': '%message_queue_transport_config%'
     client: ~
+    
+parameters:    
+    # Used to hide backend under specified prefix, should be started with "/", for instance "/admin"
+    web_backend_prefix: '/admin'
+    enable_price_sharding: false
+    api_caller.options:
+    timeout: 10  # maximum transport + execution duration of the call in sec.
+    ssl_verifypeer: false  # to stop cURL from verifying the peer's certificate.
+    ssl_verifyhost: false
+    useragent: "OB API Caller"  # contents of the "User-Agent: " header.
+    followlocation: true  # to follow any "Location: " header that the server sends.
+    sslversion: 3  # set to 3 to avoid any bugs that relate to automatic version selection.
+    fresh_connect: false  # set to true to force full reconnect every call.
+#    api.base_url: "http://localhost/aakron-ups-api/web/app_dev.php/api/"
+    api.default_version: v1    

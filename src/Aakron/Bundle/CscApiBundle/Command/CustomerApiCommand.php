@@ -48,8 +48,9 @@ class CustomerApiCommand extends ContainerAwareCommand implements CronCommandInt
     {
         $importApiManager = $this->getContainer()->get('aakron_import_customer_api');
         $apiCallerManager = $this->getContainer()->get('api_caller');
-       
+     
         $responseData = $apiCallerManager->call(new HttpGetJson($importApiManager->getSourceApi(), array()));
+       
         $progressBar = new ProgressBar($output, count($responseData));
         $progressBar->start();
         $progressBar->setRedrawFrequency(1);
@@ -110,8 +111,13 @@ class CustomerApiCommand extends ContainerAwareCommand implements CronCommandInt
                     $options = $importApiManager->generatAuthentication();
                     $responseData = $apiCallerManager->call(new HttpPostJsonBody($this->getContainer()->getParameter("customer.destination.url"), $customerArrayTmp, false, $options));
                     $responseData = $this->objectToArray($responseData); 
-                
-                    $customerUserArray[$key]['data']['relationships']["customer"]["data"]=array("type"=>"customers","id"=>$responseData["data"]["id"]);
+                    if(isset($responseData['data']))
+                    {
+                        if(isset($responseData['data']['id']) && $customerData['postalCode']!="")
+                        {
+                            $customerUserArray[$key]['data']['relationships']["customer"]["data"]=array("type"=>"customers","id"=>$responseData["data"]["id"]);
+                        }
+                    }                    
                 
                 }
                 /**
@@ -129,8 +135,8 @@ class CustomerApiCommand extends ContainerAwareCommand implements CronCommandInt
                 $customerUserArray[$key]['data']['attributes']['middleName'] = $customerData['middleName'];
                 // $customerUserArray['data']['attributes']['title'] = isset($customerData['jobTitle'])?$customerData['jobTitle']:"";
                 $customerUserArray[$key]['data']['attributes']['password'] = ucfirst($customerData['firstName']) . '123456';
-                $customerUserArray[$key]['data']['attributes']['enabled'] = false;
-                $customerUserArray[$key]['data']['attributes']['confirmed'] = false;
+                $customerUserArray[$key]['data']['attributes']['enabled'] = true;
+                $customerUserArray[$key]['data']['attributes']['confirmed'] = true;
                 $options = $importApiManager->generatAuthentication();                
                 $responseData = $apiCallerManager->call(new HttpPostJsonBody($importApiManager->getDestinationApi(), $customerUserArray[$key], false, $options));                
                 /**
@@ -168,7 +174,7 @@ class CustomerApiCommand extends ContainerAwareCommand implements CronCommandInt
                         
                         $optionsForAddress = $importApiManager->generatAuthentication();
                         $responseData = $apiCallerManager->call(new HttpPostJsonBody($this->getContainer()->getParameter("customeruser_address.destination.url"), $customerUserAddressArray[$key], false, $optionsForAddress)); 
-                     //    print_r($responseData);exit;
+                         
                     }
                   
                 }

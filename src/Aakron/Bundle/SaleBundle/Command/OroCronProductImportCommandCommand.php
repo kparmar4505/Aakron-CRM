@@ -121,7 +121,7 @@ class OroCronProductImportCommandCommand extends ContainerAwareCommand
                     
                     $options = $this->getContainer()->get('aakron_import_customer_api')->generatAuthentication();
                     
-                    $responseData = $this->getContainer()->get('api_caller')->call(new HttpPostJsonBody("http://localhost/Aakron/orocommerce-application/web/admin/api/products", $postProductData, false, $options));
+                    $responseData = $this->getContainer()->get('api_caller')->call(new HttpPostJsonBody($this->getContainer()->getParameter("aakron_crm_url")."/admin/api/products", $postProductData, false, $options));
                     $responseData = $this->objectToArray($responseData);
                     
                     if(isset($responseData["data"]["id"])){
@@ -152,7 +152,7 @@ class OroCronProductImportCommandCommand extends ContainerAwareCommand
             $productprices["data"]["relationships"]["unit"]["data"]["type"] = 'productunits';
             $productprices["data"]["relationships"]["unit"]["data"]["id"] = 'item';
             
-            $responseData = $this->getContainer()->get('api_caller')->call(new HttpPostJsonBody("http://localhost/Aakron/orocommerce-application/web/admin/api/productprices", $productprices, false, $options));
+            $responseData = $this->getContainer()->get('api_caller')->call(new HttpPostJsonBody($this->getContainer()->getParameter("aakron_crm_url")."/admin/api/productprices", $productprices, false, $options));
             $responseData = $this->objectToArray($responseData); 
             
            // var_dump($responseData);exit;

@@ -1,3 +1,7 @@
+ibnab_pmanager:
+    resource: "@IbnabPmanagerBundle/Resources/config/routing.yml"
+    prefix:   /
+
 aakron_customer:
     resource: "@AakronCustomerBundle/Resources/config/routing.yml"
     prefix:   /

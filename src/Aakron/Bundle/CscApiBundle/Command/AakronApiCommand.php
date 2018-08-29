@@ -54,7 +54,7 @@ class AakronApiCommand extends ContainerAwareCommand implements CronCommandInter
         $progressBar = new ProgressBar($output, count($responseData));
         $progressBar->start();
       //  $progressBar->setRedrawFrequency(10);
-       // print_r($responseData);exit;
+       
         $responseArray=array();
         $accountData=array();
         $i = 0;
