@@ -121,7 +121,7 @@ class OroCronProductImportCommandCommand extends ContainerAwareCommand
                     
                     $options = $this->getContainer()->get('aakron_import_customer_api')->generatAuthentication();
                     
-                    $responseData = $this->getContainer()->get('api_caller')->call(new HttpPostJsonBody($this->getContainer()->getParameter("aakron_crm_url")."/admin/api/products", $postProductData, false, $options));
+                    $responseData = $this->getContainer()->get('api_caller')->call(new HttpPostJsonBody($this->getContainer()->getParameter("aakron_crm_url")."admin/api/products", $postProductData, false, $options));
                     $responseData = $this->objectToArray($responseData);
                     
                     if(isset($responseData["data"]["id"])){
@@ -152,7 +152,7 @@ class OroCronProductImportCommandCommand extends ContainerAwareCommand
             $productprices["data"]["relationships"]["unit"]["data"]["type"] = 'productunits';
             $productprices["data"]["relationships"]["unit"]["data"]["id"] = 'item';
             
-            $responseData = $this->getContainer()->get('api_caller')->call(new HttpPostJsonBody($this->getContainer()->getParameter("aakron_crm_url")."/admin/api/productprices", $productprices, false, $options));
+            $responseData = $this->getContainer()->get('api_caller')->call(new HttpPostJsonBody($this->getContainer()->getParameter("aakron_crm_url")."admin/api/productprices", $productprices, false, $options));
             $responseData = $this->objectToArray($responseData); 
             
            // var_dump($responseData);exit;
@@ -228,8 +228,8 @@ class OroCronProductImportCommandCommand extends ContainerAwareCommand
         $requestArray["culture"] = "en_us";
         $requestArray["project_id"] = "2";
         $requestArray["duration"] = $timeslot;
-        
-        $responseData = $this->getContainer()->get('api_caller')->call(new HttpGetJson("http://209.50.53.113/migration-api-hidden-new/web/api/v1/product/latest-updated",$requestArray));
+        $apiUrl = $this->getParameter("ob_product_api");
+        $responseData = $this->getContainer()->get('api_caller')->call(new HttpGetJson($apiUrl."/product/latest-updated",$requestArray));
         
         return $this->objectToArray($responseData);
     }
@@ -238,8 +238,8 @@ class OroCronProductImportCommandCommand extends ContainerAwareCommand
         $requestArray["_format"] = "json";
         $requestArray["culture"] = "en_us";
         $requestArray["project_id"] = "2";        
-        
-        $responseData = $this->getContainer()->get('api_caller')->call(new HttpGetJson("http://209.50.53.113/migration-api-hidden-new/web/api/v1/product/supplier/count",$requestArray));
+        $apiUrl = $this->getParameter("ob_product_api");
+        $responseData = $this->getContainer()->get('api_caller')->call(new HttpGetJson($apiUrl."/product/supplier/count",$requestArray));
         
         return $this->objectToArray($responseData);
     }
@@ -250,8 +250,8 @@ class OroCronProductImportCommandCommand extends ContainerAwareCommand
         $requestArray["supplier_id"] =$supplierId;
         $requestArray["start"] =$start;
         $requestArray["limit"] =$limit;        
-       
-        $responseData = $this->getContainer()->get('api_caller')->call(new HttpGetJson("http://209.50.53.113/migration-api-hidden-new/web/api/v1/product/virtual",$requestArray));
+        $apiUrl = $this->getParameter("ob_product_api");
+        $responseData = $this->getContainer()->get('api_caller')->call(new HttpGetJson($apiUrl."/product/virtual",$requestArray));
         
         return $this->objectToArray($responseData);
     }

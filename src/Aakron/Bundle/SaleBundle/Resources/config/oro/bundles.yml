@@ -1,2 +1,10 @@
 #bundles:
 #    - { name: Aakron\Bundle\SaleBundle\AakronSaleBundle, priority: 1 }
+aakron_lead:
+    resource: "@AakronSaleBundle/Controller/"
+    type:     annotation
+    prefix:   /
+aakron_lead_parent_bundle:
+    resource: "@!OroSalesBundle/Controller/"
+    type:     annotation
+    prefix:   /

@@ -137,6 +137,8 @@ class CustomerApiCommand extends ContainerAwareCommand implements CronCommandInt
                 $customerUserArray[$key]['data']['attributes']['password'] = ucfirst($customerData['firstName']) . '123456';
                 $customerUserArray[$key]['data']['attributes']['enabled'] = true;
                 $customerUserArray[$key]['data']['attributes']['confirmed'] = true;
+                
+                $customerUserArray[$key]['data']['relationships']['roles']['data']=array('type' => 'customer_user_roles','id' => '2');
                 $options = $importApiManager->generatAuthentication();                
                 $responseData = $apiCallerManager->call(new HttpPostJsonBody($importApiManager->getDestinationApi(), $customerUserArray[$key], false, $options));                
                 /**

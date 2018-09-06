@@ -54,3 +54,7 @@ oro:
             payment_term_7c4f1e8e:
                 label:          'Additional Note'
                 description:    Relationship with the Additional Note that was selected as a payment method.
+    sale:
+        quote:
+            additional_notes:
+                label: 'Additinal Note'             

@@ -39,6 +39,7 @@
 {% endblock navButtons %}
 
 {% block content_data %}
+
     {% set id = 'quote-edit' %}
 
     {% set quoteEntryPointEvents = {
@@ -69,6 +70,8 @@
                 {{ form_row(form.customerUser) }}
             </div>
         </div>
+        
+        
     {% endset %}
 
     {% set lineItems %}
@@ -134,6 +137,51 @@
     %}
 {% set additionalData = [] %}
 {% set myIndex = 0 %}
+    {% set additionalMultiSelect %}
+    
+    		{% set options = {
+                view: 'aakronsale/js/app/views/custom-quote-view'
+            } %}
+
+            <div
+                data-layout="separate"
+                data-page-component-module="oroui/js/app/components/view-component"
+                data-page-component-options="{{ options|json_encode }}">
+                <div class="custom-quote-additional-notes-block">
+    		{{ form_label(form.additional_notes) }}
+         	<select class="js-additional-notes-multiselect" size="9" style="width:500px;" multiple>
+         	    <option value="">Select Seller Note</option>
+         		<option value="Email Proof: Will be available at no charge">Email Proof: Will be available at no charge</option>
+<option value="Product Proof: Will be available at no charge">Product Proof: Will be available at no charge</option>
+<option value="Product Proofs required for orders over $2,000 value">Product Proofs required for orders over $2,000 value</option>
+<option value="Freight Estimate and ship method must be stated on PO">Freight Estimate and ship method must be stated on PO</option>
+<option value="Freight Estimated via UPS Hundred Weight, ship method must be stated on PO">Freight Estimated via UPS Hundred Weight, ship method must be stated on PO</option>
+<option value="Prepay">Prepay</option>
+<option value="We Recommend Checking Color of Choice to Ensure Stock availability">We Recommend Checking Color of Choice to Ensure Stock availability</option>
+         	</select>
+            
+            {{ form_widget(form.additional_notes) }}
+            {{ form_errors(form.additional_notes) }}
+        </div>
+            </div>
+    	
+        
+    {% endset %}
+    
+    {% set additionalData = additionalData|merge([additionalMultiSelect]) %}
+   
+    {% if additionalData is not empty %}
+        {% set dataBlocks = dataBlocks|merge([{
+            'title': 'oro.sale.quote.sections.additional'|trans,
+            'subblocks': [{
+                'title': '',
+                'useSpan': false,
+                'data' : additionalData
+            }]
+        }] ) %}
+    {% endif %}    
+{#% set additionalData = [] %}
+{% set myIndex = 0 %}
     {% for child in form.children if child.vars.extra_field is defined and child.vars.extra_field %}
     {% if myIndex == 0 %}
         {% set additionalData = additionalData|merge([form_row(child)]) %}
@@ -149,7 +197,7 @@
                 'data' : additionalData
             }]
         }] ) %}
-    {% endif %}
+    {% endif %#}
     
     {% if isShippingAddressGranted %}
         {% set shippingAddress %}
@@ -214,7 +262,7 @@
         }]
     }]) %#}
 
-    
+ 
 
     {% set data = {
         'formErrors': form_errors(form),

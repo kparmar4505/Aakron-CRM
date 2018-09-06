@@ -2,8 +2,11 @@ services:
 #    aakron_sale.example:
 #        class: Aakron\Bundle\SaleBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    aakron_sale.quote_type_extension:
+        class: Aakron\Bundle\SaleBundle\Form\Extension\QuoteTypeExtension
+        tags:
+            - { name: form.type_extension, extended_type: Oro\Bundle\SaleBundle\Form\Type\QuoteType }
 #    aakron_sale.quote_product_type_extension:
 #        class: Aakron\Bundle\SaleBundle\Form\Extension\QuoteProductTypeExtension
 #        tags:
 #            - { name: form.type_extension, extended_type: Oro\Bundle\SaleBundle\Form\Type\QuoteProductType }
-

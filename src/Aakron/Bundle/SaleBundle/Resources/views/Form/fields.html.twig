@@ -122,7 +122,7 @@
         {{ form_widget(form.quoteProductOffers) }}
         {{ form_errors(form.quoteProductOffers) }}
     </td>
-    <td class="quote-lineitem-product-detail" data-url="{{aakron_crm_url}}/app_dev.php/admin/product-details">
+    <td class="quote-lineitem-product-detail" data-url="{{aakron_crm_url}}app_dev.php/admin/product-details">
     		
     </td>    
     
@@ -151,15 +151,9 @@
             </div>
         {% endif %}#}
          <div class="quote-lineitem-notes-seller-active">
-            {{ form_label(form.comment) }}
-            {{ form_widget(form.comment) }}
+	            {{ form_label(form.comment) }}
+	            {{ form_widget(form.comment) }}
                 {{ form_errors(form.comment) }}
-                
-          
-           {# <div data-page-component-module="oroorder/js/app/components/notes-component">
-                {{ form_widget(form.comment) }}
-                {{ form_errors(form.comment) }}
-            </div>#}
         </div>
     </td>
 {% endblock %}

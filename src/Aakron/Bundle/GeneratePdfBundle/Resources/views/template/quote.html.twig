@@ -1,0 +1,407 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Quote </title>
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic,300italic,700italic,300&subset=latin,greek' rel='stylesheet' type='text/css'>
+        
+        <style>
+            input:focus {
+    border: 0;
+    outline: 0;
+}
+@media print{
+    body{overflow: visible;position: relative}
+   body {transform: scale(1);}
+    table {page-break-inside: avoid;}
+}
+
+        </style>
+    </head>
+    <body style="margin: 0;padding: 0">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="overflow: visible;position: relative;font-family: 'Roboto Condensed', sans-serif;">
+             <tr>
+                <td align="center" valign="middle">
+                    <form method="GET" id="my_form">
+                    <table border="0" cellpadding="0" cellspacing="0" width="1150" style="background-color:#FFF;">
+                        
+                        <tr>
+                           
+                            <td align="left" valign="middle" >
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <td align="right" valign="middle" style="font-size: 18px;font-weight: 600">Quote Number</td>
+                                    <td align="right" valign="middle" width="10%" style="border-bottom: 1px solid #DDD;text-align: left">
+                                        <span style="padding-left: 10px;border: 0;font-size: 20px;color: #0d5cab;font-weight: normal" >{{data.quote_id}}</span>
+                                    </td>
+                                    
+                                </table>
+                            </td>
+                           
+                        </tr>
+                        
+                    </table>
+                        </form>
+                </td>
+            </tr>
+             <tr>
+                <td align="center" valign="middle">
+                    <table border="0" cellpadding="0" cellspacing="0" style="background-color:#FFF;">
+                        
+                        <tr>
+                            
+                            <td align="left" valign="middle" >
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <td align="left" valign="middle">
+                                        <img class="top" src="http://dev.aakroncrm.com/pdf-assets/images/akron-banner.png" alt="" style="width: 100%;">
+                                    </td>
+                                    
+                                </table>
+                            </td>
+                            
+                        </tr>
+                        
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" valign="top">
+                    <table border="0" cellspacing="0" cellpadding="0" width="1150" style="background-color:#fff;">
+                        <tr>
+                        
+                            <td align="left"  valign="top" width="550">
+                                <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+                                    <tr>
+                                        <td align="left"  valign="top">
+                                            <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                                <tr>
+                                                    <td align="left" valign="top" height="15"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="top">
+                                                        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                                            <tr>
+                                                                <td align="left" valign="top" style="color: #ee352a;font-size: 18px;font-weight: 600;">
+                                                                  Distributor  Information
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                   
+                                                                    <td style="font-size: 15px;font-weight: 600;line-height: 23px;color: #404040" align="left" height="10" valign="top">
+                                                                       
+                                                                        <table border="0" cellpadding="0" cellspacing="0" width="550px">
+                                                                            <tbody>
+                                                                          <tr>
+                                                                                <td align="left" valign="top" style="font-weight: normal;font-size: 17px;color: #030303;">
+                                                                                    Customer Number: 
+                                                                                </td>
+                                                                                <td align="left"  valign="top" style=" border-bottom: 1px solid #DDD; color: #ee352a;font-size: 18px;font-weight: 600;width: 77%">
+                                                                                 <span style="padding-left: 10px;border: 0;font-size: 20px;color: #0d5cab;font-weight: normal">{{data.customer_number}}</span>
+                                                                                </td>
+                                                                            </tr>
+                                                                          <tr>
+                                                                                <td align="left" valign="top" style="font-weight: normal;font-size: 17px;color: #030303;">
+                                                                                    Company:
+                                                                                </td>
+                                                                                <td align="left"  valign="top" style=" border-bottom: 1px solid #DDD; color: #ee352a;font-size: 18px;font-weight: 600;width: 77%">
+                                                                                 <span style="padding-left: 10px;border: 0;font-size: 20px;color: #0d5cab;font-weight: normal">{{data.company}}</span>
+                                                                                </td>
+                                                                            </tr>
+                                                                          <tr>
+                                                                                <td align="left" valign="top" style="font-weight: normal;font-size: 17px;color: #030303;">
+                                                                                    Contact Name: 
+                                                                                </td>
+                                                                                <td align="left"  valign="top" style=" border-bottom: 1px solid #DDD; color: #ee352a;font-size: 18px;font-weight: 600;width: 77%">
+                                                                                 <span style="padding-left: 10px;border: 0;font-size: 20px;color: #0d5cab;font-weight: normal">{{data.contact_name}}</span>
+                                                                                </td>
+                                                                            </tr>
+                                                                          <tr>
+                                                                                <td align="left" valign="top" style="font-weight: normal;font-size: 17px;color: #030303;">
+                                                                                    Address: 
+                                                                                </td>
+                                                                                <td align="left"  valign="top" style=" border-bottom: 1px solid #DDD; color: #ee352a;font-size: 18px;font-weight: 600;width: 77%">
+                                                                                 <span style="padding-left: 10px;border: 0;font-size: 20px;color: #0d5cab;font-weight: normal">{{data.address}}</span>
+                                                                                </td>
+                                                                            </tr>
+                                                                          <tr>
+                                                                                <td align="left" valign="top" style="font-weight: normal;font-size: 17px;color: #030303;">
+                                                                                    Phone: 
+                                                                                </td>
+                                                                                <td align="left"  valign="top" style=" border-bottom: 1px solid #DDD; color: #ee352a;font-size: 18px;font-weight: 600;width: 77%">
+                                                                                 <span style="padding-left: 10px;border: 0;font-size: 20px;color: #0d5cab;font-weight: normal">{{data.phone}}</span>
+                                                                                </td>
+                                                                            </tr>
+                                                                          <tr>
+                                                                                <td align="left" valign="top" style="font-weight: normal;font-size: 17px;color: #030303;">
+                                                                                    Email: 
+                                                                                </td>
+                                                                                <td align="left"  valign="top" style=" border-bottom: 1px solid #DDD; color: #ee352a;font-size: 18px;font-weight: 600;width: 77%">
+                                                                                 <span style="padding-left: 10px;border: 0;font-size: 20px;color: #0d5cab;font-weight: normal">{{data.email}}</span>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody></table>
+                                                                    </td>
+                                                                    <td align="left" valign="top" width="20"> </td>
+                                                                    <td style="font-size: 15px;font-weight: 600;line-height: 23px;color: #404040" align="left" height="10" valign="top">
+                                                                       
+                                                                        <table border="0" cellpadding="0" cellspacing="0" width="550px">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                <td style="font-size: 15px;font-weight: 600;line-height: 23px;color: #404040" align="left" height="10" valign="top">
+                                                                       
+                                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                <td align="left" valign="top" style="font-weight: normal;font-size: 17px;color: #030303;">
+                                                                                    Date : 
+                                                                                </td>
+                                                                                <td align="left" valign="top" style=" border-bottom: 1px solid #DDD; color: #ee352a;font-size: 18px;font-weight: 600;width: 77%">
+                                                                                 <span style="padding-left: 10px;border: 0;font-size: 20px;color: #0d5cab;font-weight: normal">{{data.date|date("m/d/Y")}}</span>
+                                                                                </td>
+                                                                            </tr>
+                                                                                <tr>
+                                                                                <td align="left" valign="top" style="font-weight: normal;font-size: 17px;color: #030303;">
+                                                                                    Prepared By : 
+                                                                                </td>
+                                                                                <td align="left" valign="top" style=" border-bottom: 1px solid #DDD; color: #ee352a;font-size: 18px;font-weight: 600;width: 77%">
+                                                                                 <span style="padding-left: 10px;border: 0;font-size: 20px;color: #0d5cab;font-weight: normal">{{data.powered_by}}</span>
+                                                                                </td>
+                                                                            </tr>
+                                                                        
+                                                                        </tbody></table>
+                                                                    </td>
+                                                                                
+                                                                            </tr>
+                                                                               <tr>
+                                                                                <td style="font-weight: normal;font-size: 17px;color: #030303;" align="left" valign="top">
+                                                                                   
+                                                                                   <span style="font-size: 15px;font-style: italic">Please reference quote number and send order to my attention</span><br>
+                                                                                   Freight FOB Factory<span style="width: 80px;border: 1px solid #404040;margin-left: 10px;text-align: center;display: inline-block">{{data.fob}}</span> <br>
+                                                                                   Quote Status<span style="margin-top: 10px;width: 80px;border: 1px solid #404040;margin-left: 10px;text-align: center;display: inline-block">{{data.quote_status}}</span>
+                                                                                   <br>
+                                                                                </td>                                                                                
+                                                                            </tr>
+                                                                             
+                                                                        </tbody></table>
+                                                                    </td>
+                                                                    
+                                                                    <td align="left" valign="top" width="20"></td>    
+                                                                </tr>
+                                                            
+                                                           	
+
+                                                        </table>
+                                                    </td>
+
+                                                </tr>	
+                                                  <tr>
+                                                              
+                                                      <td align="left" valign="middle" height="30" style="border-bottom: 2px solid #404040"></td>											  	
+                                                            </tr>
+                                                  <tr>
+                                                              
+                                                      <td align="left" valign="middle" height="10" ></td>											  	
+                                                            </tr>
+                                                
+                                                            <tr  > 
+                                                    
+                                                    <td align="left" valign="top" style="text-align: center;line-height: 25px" >
+                                                        <table border="0" cellspacing="0" width="100%" >
+                                                          
+                                                            <tbody><tr>
+                                       <th style="border-bottom: 2px solid #DDD;border-right:2px solid #DDD;color: #ee352a;font-size: 18px;font-weight: 600;vertical-align: top;height: 45px" width="15%"> Item Number</th>
+                                       <th style="border-bottom: 2px solid #DDD;border-right:2px solid #DDD;color: #ee352a;font-size: 18px;font-weight: 600;vertical-align: top;height: 45px" width="40%"> Description </th>
+                                       <th style="border-bottom: 2px solid #DDD;border-right:2px solid #DDD;color: #ee352a;font-size: 18px;font-weight: 600;vertical-align: top;height: 45px" width="15%"> Quantity</th>
+                                       <th style="border-bottom: 2px solid #DDD;border-right:2px solid #DDD;color: #ee352a;font-size: 18px;font-weight: 600;vertical-align: top;height: 45px" width="15%"> NET Price <br><span style="color:#000;font-weight: normal">(Each)</span> </th>
+                                       <th style="border-bottom: 2px solid #DDD;color: #ee352a;font-size: 18px;font-weight: 600;vertical-align: top;height: 45px" width="15%"> Value</th>
+                                                            
+                                                           
+                                                            
+                                                            </tr>
+                                                            {% for products in data.grid_products %}
+														       
+														        
+	<tr>
+        <td style="color: #0d5cab;font-size: 20px;border-bottom: 2px solid #DDD;border-right:2px solid #DDD;text-align:left;padding-left:15px; " >{{products.sku}}</td>
+        <td style="color: #0d5cab;font-size: 20px;border-bottom: 2px solid #DDD;border-right:2px solid #DDD;text-align:left;padding-left:15px; " >{{products.name}}</td>
+        <td style="color: #0d5cab;font-size: 20px;border-bottom: 2px solid #DDD;border-right:2px solid #DDD;text-align:left;padding-left:15px; " >{{products.quantity}}</td>
+        <td style="color: #0d5cab;font-size: 20px;border-bottom: 2px solid #DDD;border-right:2px solid #DDD;text-align:left;padding-left:15px; " >${{products.price}}</td>
+        <td style="color: #0d5cab;font-size: 20px;border-bottom: 2px solid #DDD;text-align:left;height:32px;padding-left:15px; " >${{products.sub_total}}</td>
+        
+       
+    </tr>													        
+														    {% endfor %}
+                                                           
+</tbody></table>
+                                                    </td> 
+                                                </tr>
+                                                <tr>
+                                                              
+                                                      <td align="left" valign="middle" height="30" ></td>											  	
+                                                            </tr>
+                                                        <tr style="background-image: url(http://dev.aakroncrm.com/pdf-assets/images/logo-watermark.png);background-repeat: repeat;background-size: 150px">
+                                                          <td colspan="4" style="color:#404040;font-size:14px;background-color:#fff;background-image: url(http://dev.aakroncrm.com/pdf-assets/images/logo-watermark.png);background-repeat: repeat;background-size: 150px;    background-position-x: 60px;">
+                                                               <table width="100%">
+                                                            <tbody>
+                                                             {% for product in data.products %}
+                                                                <tr >
+                                                                    
+                                                                    <td align="left" valign="top" style="height: 180px;width: 180px;border:2px solid #404040;vertical-align: middle;">
+                                                                        <img style="    height: auto;width: 180px;vertical-align: middle;max-height: 180px;" src="{{product.image|replace({'https': 'http'})}}" >
+                                                                    </td>
+                                                                     <td align="left" valign="top" width="10"></td>
+                                                                     <td align="left" valign="top" style="border-top: 2px solid #404040;">
+                                                                        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                                                            <tr height="15">
+                                                                                <td></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top" style="    color: #ee352a;font-size: 18px;font-weight: 600;">
+                                                                                    Item: <span style="font-weight: normal;padding-left: 65px;border: 0;border-bottom: 1px solid #DDD;font-size: 20px;width: 76%;color: #0d5cab">{{product.sku}} {{product.name}}</span>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top" style="font-weight: normal;font-size: 17px;color: #030303;border-bottom: 1px solid #DDD;">
+                                                                                    Setup Charge: <span style="font-weight: normal;padding-left: 10px;border: 0;font-size: 20px;width: 76%;color: #0d5cab">{{product.setup_charge}}</span>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top" style="font-weight: normal;font-size: 17px;color: #030303;border-bottom: 1px solid #DDD;">
+                                                                                    Price Includes: <span style="font-weight: normal;padding-left: 10px;border: 0;font-size: 20px;width: 76%;color: #0d5cab">{{product.pricint_includes}}</span>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="left" valign="top" style="font-weight: normal;font-size: 17px;color: #030303;">
+                                                                                    Notes:<br> 
+                                                                                    {% set sellerNotes = product.comment|split('\n') %}                                                                                   
+                                                                                    {% for notes in sellerNotes %}
+	                                                                                    <div style="font-weight: normal;padding-left: 10px;border: 0;font-size: 20px;width: 100%;border-bottom: 1px solid #DDD;color: #0d5cab">
+	                                                                                    	<span>{{notes}}</span>
+	                                                                                    </div>
+                                                                                    {% endfor %}
+                                                                                    
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+
+                                                                    </td>
+                                                                    		        
+                                                                </tr>
+                                                                
+                                                                 {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                              
+                                                      <td align="left" valign="middle" height="20"></td>											  	
+                                                            </tr>
+                                                <tr>
+                                                                                <td align="left" valign="top"  style="font-weight: normal;font-size: 17px;color: #030303;">
+                                                                                    <strong>Additional Information:</strong><br>
+                                                                                    
+                                                                                    {% set additionalNotes = data.additional_info|split('\n') %}                                                                                   
+                                                                                    {% for notes in additionalNotes %}
+	                                                                                    <div style="font-weight: normal;border-bottom: 2px solid #DDD;font-size: 20px;width: 100%;color: #0d5cab">
+	                                                                                    	<span>{{notes}}</span>
+	                                                                                    </div>
+                                                                                    {% endfor %}
+                                                                                    
+                                                                                </td>
+                                                                            </tr>
+                                                    <tr>
+                                                              
+                                                      <td align="left" valign="middle" height="20"></td>											  	
+                                                            </tr>
+                                
+                                    
+                                    <tr>
+                                        <td valign="top" height="10" align="left"></td>
+                                    </tr>
+                                    
+                                   
+												
+
+                                </table>
+                            </td>
+                        </tr>
+
+                    </table>					
+                </td>
+               
+            </tr>
+        </table>
+    </td>
+</tr>
+            <tr>
+                <td align="center" valign="top">
+                    <table border="0" cellspacing="0" cellpadding="0" width="1150" style="">
+                        <tr>
+                            
+                            <td align="left"  valign="top" width="550">
+                                <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+                                    <tr>
+                                        <td align="left"  valign="top" style="">
+                                            <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                                
+                                                <tr>
+                                                    <td align="left" valign="top" style="border-top: 2px solid #404040">
+                                                        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                                            <tr>
+                                                             <td align="center" valign="top" style="text-align: left;scolor: #404040;font-size: 15px;padding:20px 0px 12px 0px;">
+                                                                 <p style="margin: 7px 0px"> Upon receipt of your order, should it be evident details are different from what was originally described and consequently quoted, the original quotation shall be rendered voice and a new quotation will be issued.  Contact factory to ensure inventory availability before placing order.   </p>
+                                                                 <p style="margin: 7px 0px">All orders are subject to credit approval. </p>
+                                                                 <p style="margin: 7px 0px">All freight estimates are based on today’s rates as given by carrier.  The factory is not responsible for any variations at time of shipment.  Shipments with special services may require additional freight billing, such as lift gates, inside deliveries, or shipments requiring a remote access; such as delivery to facilities and residential locations. </p>
+                                                                 <p style="margin: 7px 0px">Any quoted item that includes a lithium battery must ship ground method only, and cannot ship any air freight method. </p>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left"  valign="top">
+                                            <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+                                                <tr>
+                                                    <td align="left" valign="top" height="10"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center" valign="top">
+                                                        <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+                                                            <tr>
+                                                                <td align="center" valign="middle" style="font-size: 18px; color: #404040;" ><strong> Visit AAkronLine.com for additional product information. </strong></td>
+                                                               
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="center" valign="middle" style="font-size: 18px; color: #404040;" ><strong>800.828.1570</strong> Phone  | <strong> 716.442.4227 Fax</strong>  |  8 Indianola Avenue, Akron, New York  14001 </td>
+                                                               
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" valign="top" height="16"></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+<!--                                    <tr>
+                                                    <td align="left" valign="top" height="40"></td>
+                                                </tr>-->
+                                </table>
+                            </td>
+                          
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+</table>
+
+</body>
+</html>
+
+
+

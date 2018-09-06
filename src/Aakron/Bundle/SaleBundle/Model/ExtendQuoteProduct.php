@@ -1,15 +1,27 @@
 <?php
 namespace Aakron\Bundle\SaleBundle\Model;
 
-class ExtendQuoteProduct
+class ExtendQuoteProduct 
 {
+    /**
+     * Constructor
+     *
+     * The real implementation of this method is auto generated.
+     *
+     * IMPORTANT: If the derived class has own constructor it must call parent constructor.
+     */
+    public function __construct()
+    {
+       // parent::_construct();
+    }
+    
     /**
      * A skeleton method for the getter. You can add it to use autocomplete hints from the IDE.
      * The real implementation of this method is auto generated.
      *
      * @return string
      */
-    public function getSetupCharge()
+    public function getMySetupCharge()
     {
     }
     
@@ -19,7 +31,7 @@ class ExtendQuoteProduct
      *
      * @param string $setupCharge
      */
-    public function setSetupCharge($setupCharge)
+    public function setMySetupCharge($setupCharge)
     {
     }
     
@@ -29,7 +41,7 @@ class ExtendQuoteProduct
      *
      * @return string
      */
-    public function getPricingIncluded()
+    public function getMyPricingIncluded()
     {
     }
     
@@ -39,7 +51,7 @@ class ExtendQuoteProduct
      *
      * @param string $pricingIncluded
      */
-    public function setPricingIncluded($pricingIncluded)
+    public function setMyPricingIncluded($pricingIncluded)
     {
     }
 }

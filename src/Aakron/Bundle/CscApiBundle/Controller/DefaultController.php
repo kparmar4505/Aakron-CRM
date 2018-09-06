@@ -51,7 +51,8 @@ class DefaultController extends Controller
     {
         $pid=$this->getProductID($id);
         $apiCallerManager = $this->get('api_caller');  
-        $responseData = $apiCallerManager->call(new HttpGetJson("http://209.50.53.113/migration-api-hidden-new/web/api/v1/product",array("_format"=>"json","product_ids"=>$pid,"culture"=>"en_us")));
+        $apiUrl = $this->getParameter("ob_product_api");
+        $responseData = $apiCallerManager->call(new HttpGetJson($apiUrl."/product",array("_format"=>"json","product_ids"=>$pid,"culture"=>"en_us")));
      
         $response = new Response();
         $serializer = $this->get('jms_serializer');

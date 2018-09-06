@@ -3,25 +3,10 @@ namespace Aakron\Bundle\SaleBundle\Form\Extension;
 
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
-use Oro\Bundle\ProductBundle\Form\Type\ProductSelectType;
-use Oro\Bundle\SaleBundle\Entity\QuoteProduct;
-use Oro\Bundle\SaleBundle\Form\Type\QuoteProductOfferCollectionType;
 use Oro\Bundle\SaleBundle\Form\Type\QuoteProductType;
-use Doctrine\Common\Persistence\ManagerRegistry;
-
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormView;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\PropertyAccess\PropertyAccess;
-use Symfony\Component\Translation\TranslatorInterface;
-
-use Oro\Bundle\ProductBundle\Entity\Product;
-use Oro\Bundle\ProductBundle\Formatter\ProductUnitLabelFormatter;
-use Oro\Bundle\SaleBundle\Formatter\QuoteProductFormatter;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+
 class QuoteProductTypeExtension extends AbstractTypeExtension
 {
     /**
@@ -41,7 +26,7 @@ class QuoteProductTypeExtension extends AbstractTypeExtension
 //      */
 //     public function configureOptions(OptionsResolver $resolver)
 //     {
-//         $resolver->setDefined(array('setupCharge','pricingIncluded'));
+//         $resolver->setDefined(array('setup_charge','pricing_included'));
 //     }
     
     /**
@@ -50,14 +35,14 @@ class QuoteProductTypeExtension extends AbstractTypeExtension
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('setupCharge', TextType::class, [
+        ->add('my_setup_charge', TextType::class, [
             'required' => false,
             'label' => 'Setup Charge',
             'attr' => array(
                 'class' => 'js-setup-charge'
             )
         ])
-        ->add('pricingIncluded', HiddenType::class, [
+        ->add('my_pricing_included', HiddenType::class, [
             'required' => false,
             'label' => 'Pricing Included',
             'attr' => array(
@@ -65,6 +50,7 @@ class QuoteProductTypeExtension extends AbstractTypeExtension
             )
         ])
         ;
+      
     }
     
 //     /**

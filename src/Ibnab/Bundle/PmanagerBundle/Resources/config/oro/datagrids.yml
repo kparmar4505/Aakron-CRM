@@ -319,7 +319,32 @@ datagrids:
                 label: ibnab.pmanager.grid_action.getpdf_label
                 icon: file
                 link: getpdf_link
-                
+    base-quotes-grid:
+        properties:
+            getpdf_link:
+                type:       url
+                route:      pmanager_default_create
+                params:     [ id ]
+        actions:
+            getpdf:
+                type: getpdf
+                data_identifier: o.id
+                frontend_handle: dialog
+                frontend_options:
+                    dialogOptions:
+                        title: @translator->trans(ibnab.pmanager.dialog.title)
+                        width: 500
+                        autoResize: true
+                        modal: true
+                        minHeight: 100
+                        allowMaximize: true
+                        allowMinimize: true
+                        dblclick: 'maximize'
+                entityName: %oro_sale.entity.quote.class%
+                acl_resource: pmanager_default_create
+                label: ibnab.pmanager.grid_action.getpdf_label
+                icon: file
+                link: getpdf_link                
     frontend-quotes-grid:
         properties:
             getpdf_link:

@@ -150,7 +150,7 @@ define(function(require) {
         /**
          * @inheritDoc
          */
-        initialize: function(options) {
+        initialize: function(options) {alert("test")
             if (!this.model) {
                 this.model = new BaseModel();
             }
@@ -265,8 +265,8 @@ define(function(require) {
         },
 
         checkAddButton: function() {
-            var enabled = Boolean(this.getProductId()) || (this.isFreeForm && this.options.allowEditFreeForm);
-            this.$addItemButton.toggle(enabled);
+//            var enabled = Boolean(this.getProductId()) || (this.isFreeForm && this.options.allowEditFreeForm);
+//            this.$addItemButton.toggle(enabled);
         },
 
         removeOfferRow: function() {
@@ -569,6 +569,44 @@ define(function(require) {
                	 	{
                	 		
                	 	}
+                	
+                	
+//                	/**** Feature Detail *******/
+//               	 	$.each(data.feature_details, function( index, myvalue ) {     
+//	               	 	  if(myvalue.label == "Pricing Includes")
+//	     				  {
+//		               	 	var $newdiv1 = $( "<p><b>"+myvalue.label + ":</b> " + myvalue.value+"</p>" );
+//		               	 $( productDetailObj).append($newdiv1);
+//		              		//$( productDetailObj).find(".js-pricing-included-html").html($newdiv1);
+//		              		//$( productDetailObj).find(".js-pricing-included").val(myvalue.value);
+//		              		//$( productDetailObj).find(".js-pricing-included-html").attr("style","width:200px;word-wrap: break-word;")
+//	     				  }
+//	               		 
+//               		});
+//               	    /**** Feature Detail *******/
+//	               	
+//               	 	/**** Product Detail *******
+//               	 	$( productDetailObj).html(data.basic_information.description).find('br').remove();
+//	               	/**** Product Detail *******/
+//               	    /**** Product charges *******/
+//               	 	try
+//               	 	{
+//	               	 	$.each(data.imprint_information.imprint_method_information, function( index, myvalue ) { 
+//	               			$.each(myvalue.charges, function( childIndex, childValue ) {console.log("====")
+//	           			 		if(childIndex == "SETUP_CHARGE")
+//	           			 		{
+//	           			 			//alert($( productDetailObj).find(".js-setup-charge").attr("name"))
+//			               			var $newdiv1 = $( "<p><b>"+childValue.label + ": </b><input type='text' value='"+childValue.charge+"' id='abc' width='150' />"+"</p>" );
+//			               			$( productDetailObj).append($newdiv1);
+////	           			 			$( productDetailObj).find(".js-setup-charge").val(childValue.charge);
+////	           			 			$( productDetailObj).find(".js-setup-charge").attr("style","width:100px")
+//		               			}
+//	               			});	               		  	               		 
+//		           		});
+//               	 	}catch(e)
+//               	 	{
+//               	 		
+//               	 	}
      	 
 	               	/**** Product charges *******/
                 },
