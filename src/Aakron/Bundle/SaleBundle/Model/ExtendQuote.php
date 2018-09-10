@@ -21,7 +21,7 @@ class ExtendQuote
      *
      * @return string
      */
-    public function getAdditionalNote()
+    public function getQuoteAdditionalNote()
     {
     }
     
@@ -31,7 +31,7 @@ class ExtendQuote
      *
      * @param string $additionalNote
      */
-    public function setAdditionalNote($additionalNote)
+    public function setQuoteAdditionalNote($auoteAdditionalNote)
     {
     }
     

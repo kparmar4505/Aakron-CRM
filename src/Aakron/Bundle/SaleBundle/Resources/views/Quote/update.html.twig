@@ -152,7 +152,7 @@
                 data-page-component-module="oroui/js/app/components/view-component"
                 data-page-component-options="{{ options|json_encode }}">
                 <div class="custom-quote-additional-notes-block">
-    		{{ form_label(form.additional_note) }}
+    		{{ form_label(form.quote_additional_note) }}
          	<select class="js-additional-notes-multiselect" size="9" style="width:500px;" multiple>
          	    <option value="">Select Seller Note</option>
          		<option value="Email Proof: Will be available at no charge">Email Proof: Will be available at no charge</option>
@@ -164,8 +164,8 @@
 <option value="We Recommend Checking Color of Choice to Ensure Stock availability">We Recommend Checking Color of Choice to Ensure Stock availability</option>
          	</select>
             
-            {{ form_widget(form.additional_note) }}
-            {{ form_errors(form.additional_note) }}
+            {{ form_widget(form.quote_additional_note) }}
+            {{ form_errors(form.quote_additional_note) }}
         </div>
             </div>
     {% endset %}
