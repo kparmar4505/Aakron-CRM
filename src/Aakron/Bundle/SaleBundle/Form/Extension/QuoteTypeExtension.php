@@ -38,7 +38,7 @@ class QuoteTypeExtension extends AbstractTypeExtension
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('additional_note', TextareaType::class, [
+        ->add('quote_additional_note', TextareaType::class, [
             'required' => false,
             'label' => 'oro.sale.quote.additional_note.label',
             'attr' => array(
