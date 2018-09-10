@@ -112,6 +112,10 @@
             {{ form_row(form.shipUntil) }}
             {{ form_row(form.assignedUsers) }}
             {{ form_row(form.assignedCustomerUsers) }}
+                	{{ form_row(form.fob) }}
+                {{ form_row(form.fob) }}
+                {{ form_row(form.quote_status) }}
+                {{ form_row(form.quote_status) }}
         </div>
     {% endset %}
     {% set dataBlocks = [
@@ -164,8 +168,6 @@
             {{ form_errors(form.additional_notes) }}
         </div>
             </div>
-    	
-        
     {% endset %}
     
     {% set additionalData = additionalData|merge([additionalMultiSelect]) %}

@@ -150,7 +150,7 @@ define(function(require) {
         /**
          * @inheritDoc
          */
-        initialize: function(options) {alert("test")
+        initialize: function(options) {
             if (!this.model) {
                 this.model = new BaseModel();
             }

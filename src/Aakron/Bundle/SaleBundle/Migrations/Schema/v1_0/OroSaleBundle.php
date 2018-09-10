@@ -1,6 +1,6 @@
 <?php
 
-namespace Aakron\Bundle\SaleBundle\Migrations\Schema\v1_4;
+namespace Aakron\Bundle\SaleBundle\Migrations\Schema\v1_0;
 
 use Doctrine\DBAL\Schema\Schema;
 
@@ -20,7 +20,10 @@ class OroSaleBundle implements Migration, DatabasePlatformAwareInterface
      */
     public function up(Schema $schema, QueryBag $queries)
     {
-        $this->addAdditinalNotes($schema);       
+     
+        $this->addAdditinalNotes($schema);
+        
+      
     }
    
     
@@ -29,9 +32,10 @@ class OroSaleBundle implements Migration, DatabasePlatformAwareInterface
      */
     protected function addAdditinalNotes(Schema $schema)
     {
-        $table = $schema->getTable('oro_sale_quote_product');
+        $table = $schema->getTable('oro_sale_quote');
+        
         $table->addColumn(
-            'setupCharge',
+            'additional_notes',
             'string',
             [
                 'oro_options' => [
@@ -39,11 +43,11 @@ class OroSaleBundle implements Migration, DatabasePlatformAwareInterface
                     'datagrid'  => ['is_visible' => false],
                 ],
                 'notnull' => false,
-                'length' => 100
+                'length' => 255
             ]
             );
         $table->addColumn(
-            'pricingIncluded',
+            'fob',
             'string',
             [
                 'oro_options' => [
@@ -55,6 +59,17 @@ class OroSaleBundle implements Migration, DatabasePlatformAwareInterface
             ]
             );
         
-        
+        $table->addColumn(
+            'quote_status',
+            'string',
+            [
+                'oro_options' => [
+                    'extend'    => ['is_extend' => true, 'owner' => ExtendScope::OWNER_CUSTOM],
+                    'datagrid'  => ['is_visible' => false],
+                ],
+                'notnull' => false,
+                'length' => 100
+            ]
+            );
     }
 }

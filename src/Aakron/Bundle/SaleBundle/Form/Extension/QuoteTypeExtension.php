@@ -8,7 +8,7 @@ use Oro\Bundle\SaleBundle\Form\Type\QuoteType;
 
 
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class QuoteTypeExtension extends AbstractTypeExtension
 {
@@ -40,11 +40,34 @@ class QuoteTypeExtension extends AbstractTypeExtension
         $builder
         ->add('additional_notes', TextareaType::class, [
             'required' => false,
-            'label' => 'Additinal Notes',
+            'label' => 'oro.sale.quote.additional_notes.label',
             'attr' => array(
                 'class' => 'js-additional-notes'
             )
-        ])        
+        ]) 
+      
+       ->add('fob', ChoiceType::class, array(
+         
+            'choices'  => array(
+                'NY'=>'NY',
+                'TN'=>'TN',
+                'NY & TN'=>'NY & TN',
+                'Overseas'=>'Overseas',
+            ),
+           'label' => 'oro.sale.quote.fob.label',
+            'choices_as_values' => true,
+        ))
+        ->add('quote_status', ChoiceType::class, array(
+     
+            'choices'  => array(
+                'New' => 'New',
+                'Accepted' => 'Accepted',
+                'Rejected' => 'Rejected',
+                'Expired' => 'Expired',
+            ),
+            'label' => 'oro.sale.quote.quote_status.label',
+            'choices_as_values' => true,
+        ))
         ;
     }
     

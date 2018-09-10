@@ -58,3 +58,7 @@ oro:
         quote:
             additional_notes:
                 label: 'Additinal Note'             
+            fob:
+                label: 'FOB' 
+            quote_status:
+                label: 'Quote Status'                 

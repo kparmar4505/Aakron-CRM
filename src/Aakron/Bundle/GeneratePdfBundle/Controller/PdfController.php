@@ -57,8 +57,8 @@ class PdfController extends Controller
        $quote["phone"] = $parametersObject->getShippingAddress()->getPhone()??"";
        $quote["date"] = $parametersObject->getCreatedAt()??"";
        $quote["powered_by"] = $this->getPowerdBy($parametersObject->getOwner()??"");
-       $quote["quote_status"] = "New";
-       $quote["fob"] = "NY";
+       $quote["quote_status"] = $parametersObject->getQuoteStatus()??"";
+       $quote["fob"] = $parametersObject->getFob()??"";
        $quote["additional_info"] = $parametersObject->getAdditionalNotes()??"";
        $quote["products"] = array();
        $quote["address"] = $this->getAddress($parametersObject->getShippingAddress()??"");   
