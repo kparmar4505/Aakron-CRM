@@ -54,7 +54,7 @@ class PdfController extends Controller
        $quote["contact_name"] = $this->getContactName($parametersObject->getCustomerUser()??"");
        $quote["email"] = $parametersObject->getEmail()??"";
        $quote["address"] = "";
-       $quote["phone"] = $parametersObject->getShippingAddress()->getPhone()??"";
+       $quote["phone"] = $this->getCustomerPhone($parametersObject->getShippingAddress()??"");   
        $quote["date"] = $parametersObject->getCreatedAt()??"";
        $quote["powered_by"] = $this->getPowerdBy($parametersObject->getOwner()??"");
        $quote["quote_status"] = $parametersObject->getQuoteStatus()??"";
@@ -62,7 +62,7 @@ class PdfController extends Controller
        $quote["additional_info"] = $parametersObject->getQuoteAdditionalNote()??"";
        $quote["products"] = array();
        $quote["address"] = $this->getAddress($parametersObject->getShippingAddress()??"");   
-   //    dump($parametersObject->getQuoteProducts());exit;
+   
        foreach($parametersObject->getQuoteProducts() as $key=>$products)
        {           
            $productId=$products->getId();
@@ -72,9 +72,11 @@ class PdfController extends Controller
            $quote["products"][$productId]["id"] = $products->getId()??"";
            $quote["products"][$productId]["name"]=$products->getProductName()??"";
            $quote["products"][$productId]["image"]=$this->getProductImage($quote["products"][$productId]["sku"])??"";
+                      
+           $productSlug = $this->getProductAPIData($quote["products"][$productId]["sku"]);
            
-           
-           $customProductDataArray = $this->getProductAPIData($quote["products"][$productId]["sku"]);
+           $quote["products"][$productId]["product_url"]=$this->getParameter("aakron_product_url").$productSlug;
+           $customProductDataArray = $this->getProductData($productSlug);
            
            $quote["products"][$productId]["setup_charge"]= $customProductDataArray["setup_charge"]??"";
            $quote["products"][$productId]["pricint_includes"]= $customProductDataArray["pricint_includes"]??"";
@@ -95,22 +97,33 @@ class PdfController extends Controller
        }
        $poid=0;
 
-//        echo "<pre>";
-//        var_dump($quote);
-//        exit;
        return $quote;
     }
     private function getAddress($address)
     {        
-        $addressArray["street1"] = $address->getStreet()??"";
-        $addressArray["street2"] = $address->getStreet2()??"";
-        $addressArray["city"] = $address->getCity()??"";
-       // $addressArray["country_code"] = $address->getCountry()->getIso2Code()??"";
-        $addressArray["region_code"] = ($address->getRegion()->getCode()??"")." ".$address->getPostalCode()??"";
+        if($address)
+        {
+            $addressArray["street1"] = $address->getStreet()??"";
+            $addressArray["street2"] = $address->getStreet2()??"";
+            $addressArray["city"] = $address->getCity()??"";
+           // $addressArray["country_code"] = $address->getCountry()->getIso2Code()??"";
+            $addressArray["region_code"] = ($address->getRegion()->getCode()??"")." ".$address->getPostalCode()??"";
+            
+            $addressArray =  array_filter($addressArray);
+            
+            return implode(", ",$addressArray);
+        }
         
-        $addressArray =  array_filter($addressArray);
+        return "";
+    }
+    private function getCustomerPhone($address)
+    {
+        if($address)
+        {
+            return $address->getPhone()??"";
+        }
         
-        return implode(", ",$addressArray);
+        return "";        
     }
     private function getPowerdBy($owner)
     {
@@ -189,11 +202,11 @@ class PdfController extends Controller
         
         $slug = $responseData["response"]["docs"][0]["slug_t"]??"";
         
-        if($slug!="")
-        {
-            return $this->getProductData($slug);
-        }
-        return false;
+//         if($slug!="")
+//         {
+//             return $this->getProductData($slug);
+//         }
+        return $slug;
     }
     private function initAction()
     {

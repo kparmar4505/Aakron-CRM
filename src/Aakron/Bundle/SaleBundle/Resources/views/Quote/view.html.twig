@@ -23,7 +23,7 @@
             <div class="badge badge-enabled status-enabled"><i class="fa-unlock"></i>{{ 'oro.sale.quote.not_expired.label'|trans }}</div>
         {% endif %}
         
-        <div style="float: right;width: 100px;text-align: right;"><a href="javascript:void(0);" onclick="window.location.href='http://dev.aakroncrm.com/app_dev.php/generate-pdf/quote/{{entity.id}}'" target="_blank">Download PDF</a></div>
+        <div style="float: right;width: 100px;text-align: right;"><a href="javascript:void(0);" onclick="window.location.href='{{aakron_crm_url}}generate-pdf/quote/{{entity.id}}'" target="_blank">Download PDF</a></div>
     </div>
 {% endblock breadcrumbs %}
 

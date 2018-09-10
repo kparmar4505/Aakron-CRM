@@ -1,3 +1,1 @@
-orocrm:
-    customer:
-        account_number.label: Account Number
+account_number: Account Number
