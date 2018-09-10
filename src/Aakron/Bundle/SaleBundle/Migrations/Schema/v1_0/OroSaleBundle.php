@@ -35,7 +35,7 @@ class OroSaleBundle implements Migration, DatabasePlatformAwareInterface
         $table = $schema->getTable('oro_sale_quote');
         
         $table->addColumn(
-            'additional_notes',
+            'additional_note',
             'string',
             [
                 'oro_options' => [

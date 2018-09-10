@@ -57,6 +57,8 @@ oro:
     sale:
         quote:
             additional_notes:
+                label: 'Additinal Note'          
+            additional_note:
                 label: 'Additinal Note'             
             fob:
                 label: 'FOB' 

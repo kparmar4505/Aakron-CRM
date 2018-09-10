@@ -21,7 +21,7 @@ class ExtendQuote
      *
      * @return string
      */
-    public function getAdditionalNotes()
+    public function getAdditionalNote()
     {
     }
     
@@ -29,9 +29,9 @@ class ExtendQuote
      * A skeleton method for the setter. You can add it to use autocomplete hints from the IDE.
      * The real implementation of this method is auto generated.
      *
-     * @param string $additionalNotes
+     * @param string $additionalNote
      */
-    public function setAdditionalNotes($additionalNotes)
+    public function setAdditionalNote($additionalNote)
     {
     }
     
