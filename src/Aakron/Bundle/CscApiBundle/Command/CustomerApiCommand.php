@@ -12,7 +12,7 @@ use Lsw\ApiCallerBundle\Call\HttpPostJsonBody as HttpPostJsonBody;
 use Lsw\ApiCallerBundle\Call\HttpGetJson as HttpGetJson;
 use Lsw\ApiCallerBundle\Call\HttpPostJson as HttpPostJson;
 use Symfony\Component\Console\Helper\ProgressBar;
-
+use Oro\Bundle\CustomerBundle\Entity\CustomerUserRole;
 class CustomerApiCommand extends ContainerAwareCommand implements CronCommandInterface
 {
 
@@ -67,7 +67,8 @@ class CustomerApiCommand extends ContainerAwareCommand implements CronCommandInt
             $customerData = (array) $customerDataArray;
             $customerUserArray[] = $importApiManager->getAddCustomerArray();
             if ($importApiManager->validateCscData($customerData)) {
-                
+            //    print_r($customerData);exit;
+               
                 // $customerUserArray['data']['attributes']['email'] = $customerData['lastName'];
                 // $customerUserArray['data']['attributes']['email'] = $customerData['firstName'];
                 // $customerUserArray['data']['attributes']['email'] = $customerData['middleName'];
@@ -97,6 +98,7 @@ class CustomerApiCommand extends ContainerAwareCommand implements CronCommandInt
                 /**
                  * *******add customers of CRM ****** Start
                  */
+                    
                 $responseDuplicateCheck = $this->checkDuplicateCustomer(trim($customerData['accountName']));
                 if (isset($responseDuplicateCheck["id"]) && $responseDuplicateCheck["id"]>0) {
                     $customerUserArray[$key]['data']['relationships']["customer"]["data"]=array("type"=>"customers","id"=>$responseDuplicateCheck["id"]);                        
@@ -115,7 +117,8 @@ class CustomerApiCommand extends ContainerAwareCommand implements CronCommandInt
                     {
                         if(isset($responseData['data']['id']) && $customerData['postalCode']!="")
                         {
-                            $customerUserArray[$key]['data']['relationships']["customer"]["data"]=array("type"=>"customers","id"=>$responseData["data"]["id"]);
+                            
+                            $customerUserArray[$key]['data']['relationships']["customer"]["data"]=array("type"=>"customers","id"=>(string)$responseData["data"]["id"]);
                         }
                     }                    
                 
@@ -135,10 +138,11 @@ class CustomerApiCommand extends ContainerAwareCommand implements CronCommandInt
                 $customerUserArray[$key]['data']['attributes']['middleName'] = $customerData['middleName'];
                 // $customerUserArray['data']['attributes']['title'] = isset($customerData['jobTitle'])?$customerData['jobTitle']:"";
                 $customerUserArray[$key]['data']['attributes']['password'] = ucfirst($customerData['firstName']) . '123456';
-                $customerUserArray[$key]['data']['attributes']['enabled'] = true;
+                $customerUserArray[$key]['data']['attributes']['enabled'] = false;
                 $customerUserArray[$key]['data']['attributes']['confirmed'] = true;
+                $customerUserArray[$key]['data']['relationships']['roles']['data']['0']=array("type" => "customer_user_roles","id"=> "1");
                 
-                $customerUserArray[$key]['data']['relationships']['roles']['data']=array('type' => 'customer_user_roles','id' => '2');
+               
                 $options = $importApiManager->generatAuthentication();                
                 $responseData = $apiCallerManager->call(new HttpPostJsonBody($importApiManager->getDestinationApi(), $customerUserArray[$key], false, $options));                
                 /**
@@ -148,10 +152,13 @@ class CustomerApiCommand extends ContainerAwareCommand implements CronCommandInt
                 /**
                  * *******customer users addresses of CRM ****** Start
                  */
+                
+                
                 $responseData=$this->objectToArray($responseData);
+                
                 if(isset($responseData['data']))
                 {
-                    if(isset($responseData['data']['id']) && $customerData['postalCode']!="")
+                    if(isset($responseData['data']['id']))
                     {
                         $customerUserAddressArray[$key]['data']['type']="customer_user_addresses";
                         
@@ -176,11 +183,11 @@ class CustomerApiCommand extends ContainerAwareCommand implements CronCommandInt
                         
                         $optionsForAddress = $importApiManager->generatAuthentication();
                         $responseData = $apiCallerManager->call(new HttpPostJsonBody($this->getContainer()->getParameter("customeruser_address.destination.url"), $customerUserAddressArray[$key], false, $optionsForAddress)); 
-                         
+                       
                     }
                   
                 }
-              
+             
                 /**
                  * *******customer users addresses of CRM ****** End
                  */
@@ -188,9 +195,10 @@ class CustomerApiCommand extends ContainerAwareCommand implements CronCommandInt
                 $i ++;
                 unset($tempArray);
                 unset($customerData);
-            } 
+        
 
             $progressBar->advance();
+            }
         }
        
         
