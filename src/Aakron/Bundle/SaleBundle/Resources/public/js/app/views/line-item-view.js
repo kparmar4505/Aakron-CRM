@@ -519,7 +519,7 @@ define(function(require) {
         	var $productSubPrice = this.$el.find(this.options.productSubPrice);
         	var $offersQuantitySelector = this.$el.find(this.options.offersQuantitySelector);
         	var $offersPriceValueSelector = this.$el.find(this.options.offersPriceValueSelector);
-        	 var subtotal = ($offersQuantitySelector.val() * $offersPriceValueSelector.val()).toFixed(3);
+        	 var subtotal = ($offersQuantitySelector.val() * $offersPriceValueSelector.val()).toFixed(2);
         				$(".quote-lineitem-offers-item-add").hide();
         				$(".quote-lineitem-offers-more-fields").hide();
         				$(".fields-row td:nth-child(2)").hide();
@@ -560,7 +560,7 @@ define(function(require) {
 	               			$.each(myvalue.charges, function( childIndex, childValue ) {
 	           			 		if(childIndex == "SETUP_CHARGE")
 	           			 		{
-			               			var $newdiv1 = $( "<p><b>"+childValue.label + ": </b><input type='text' value='"+childValue.charge+"' id='abc' width='150' />"+"</p>" );
+			               			var $newdiv1 = $( "<p><b>"+childValue.label + ": </b><input type='text' value='"+(childValue.charge).toFixed(2)+"' id='abc' width='150' />"+"</p>" );
 			               			$( productDetailObj).append($newdiv1);
 		               			}
 	               			});	               		  	               		 

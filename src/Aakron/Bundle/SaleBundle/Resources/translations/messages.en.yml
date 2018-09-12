@@ -1,66 +1,69 @@
 oro:
-    paymentterm:
-        channel_type:
-            label: Additional Notes
-        settings:
-            label: Additional Note Settings
-            labels.label: Label
-            short_labels.label: 'Short Label'
-        menu:
-            payment_terms.label:       Additional Notes
-            payment_terms.description: List of Additional Notes
-
-        entity_label: Additional Note
-        entity_plural_label: Additional Notes
-        entity_description: Represents Additional Notes
-
-        id.label: ID
-        label.label: Label
-        form.choose: 'Choose a Additional Note...'
-        customer_groups.label: 'Customer Group'
-        customers.label: 'Customer'
-
-        has_payment_term.label: Has Additional Note
-
-        customer:
-            customer_group_defined: '{{ payment_term }} (Defined for Customer Group)'
-
-        controller:
-            paymentterm:
-                saved.message: 'Additional Note has been saved'
-                delete.with_two_url.message: 'It is currently being used by some {{ customers }} and {{ customer_groups }}.'
-                delete.with_url.message: ' It is currently being used by some {{ url }}.'
-
-        sections:
-            general_information: General information
-
-        methods:
-            term_method.label: 'Additional Note'
-
-        payment_terms:
-            label: 'Terms: %paymentTerm%'
-
-        delete.message.placeholder: '%confirmationMessage%'
-
-    payment:
-        admin:
-            payment_term.label: 'Additional Notes'
-
-    customer:
-        payment_term_7c4f1e8e:
-            label:              'Additional Note'
-            description:        Relationship with the Additional Note that was selected as a payment method.
-        customergroup:
-            payment_term_7c4f1e8e:
-                label:          'Additional Note'
-                description:    Relationship with the Additional Note that was selected as a payment method.
     sale:
         quote:
             additional_notes:
+                label: 'Additional Note' 
+            additional_note:
                 label: 'Additional Note'          
             quote_additional_note:
                 label: 'Additional Note'             
             fob:
                 label: 'FOB' 
             quote_status:
-                label: 'Quote Status'                 
+                label: 'Quote Status' 
+#    paymentterm:
+#        channel_type:
+#            label: Additional Notes
+#        settings:
+#            label: Additional Note Settings
+#            labels.label: Label
+#            short_labels.label: 'Short Label'
+#        menu:
+#            payment_terms.label:       Additional Notes
+#            payment_terms.description: List of Additional Notes
+#
+#        entity_label: Additional Note
+#        entity_plural_label: Additional Notes
+#        entity_description: Represents Additional Notes
+#
+#        id.label: ID
+#        label.label: Label
+#        form.choose: 'Choose a Additional Note...'
+#        customer_groups.label: 'Customer Group'
+#        customers.label: 'Customer'
+#
+#        has_payment_term.label: Has Additional Note
+#
+#        customer:
+#            customer_group_defined: '{{ payment_term }} (Defined for Customer Group)'
+#
+#        controller:
+#            paymentterm:
+#                saved.message: 'Additional Note has been saved'
+#                delete.with_two_url.message: 'It is currently being used by some {{ customers }} and {{ customer_groups }}.'
+#                delete.with_url.message: ' It is currently being used by some {{ url }}.'
+#
+#        sections:
+#            general_information: General information
+#
+#        methods:
+#            term_method.label: 'Additional Note'
+#
+#        payment_terms:
+#            label: 'Terms: %paymentTerm%'
+#
+#        delete.message.placeholder: '%confirmationMessage%'
+#
+#    payment:
+#        admin:
+#            payment_term.label: 'Additional Notes'
+#
+#    customer:
+#        payment_term_7c4f1e8e:
+#            label:              'Additional Note'
+#            description:        Relationship with the Additional Note that was selected as a payment method.
+#        customergroup:
+#            payment_term_7c4f1e8e:
+#                label:          'Additional Note'
+#                description:    Relationship with the Additional Note that was selected as a payment method.
+                

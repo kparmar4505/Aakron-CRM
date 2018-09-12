@@ -8,6 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('AakronSaleBundle:Default:index.html.twig');
+        return $this->redirect($this->generateUrl('oro_user_security_login'));
     }
 }
