@@ -67,34 +67,6 @@ class CustomerApiCommand extends ContainerAwareCommand implements CronCommandInt
             $customerData = (array) $customerDataArray;
             $customerUserArray[] = $importApiManager->getAddCustomerArray();
             if ($importApiManager->validateCscData($customerData)) {
-            //    print_r($customerData);exit;
-               
-                // $customerUserArray['data']['attributes']['email'] = $customerData['lastName'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['firstName'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['middleName'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['jobTitle'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['nameSuffix'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['department'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['organization'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['buyingGroup'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['street'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['street2'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['country'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['postalCode'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['city'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['region'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['birthday'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['fax'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['emails'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['social_account'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['social_type'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['account'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['accountName'];
-                // $customerUserArray['data']['attributes']['email'] = $customerData['phones'];
-                
-                // $tempArray['data']['attributes'] = $customerData;
-                
-                
                 /**
                  * *******add customers of CRM ****** Start
                  */
