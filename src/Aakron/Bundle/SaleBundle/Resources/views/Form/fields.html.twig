@@ -254,7 +254,7 @@
         data-layout="separate">
         {{ form_widget(form, { 'prototype' : prototype}) }}
        <td class="quote-lineitem-offers-remove">
-            {# <button type="button" class="removeRow btn icons-holder"><i class="fa-close"></i></button>#}
+            <button type="button" class="removeRow btn icons-holder"><i class="fa-close"></i></button>
         </td>
     </tr>
 {% endmacro %}
@@ -284,7 +284,7 @@
         <div class="quote-lineitem-offers-more-fields">
             {% set attrs = {} %}
             {% if prototype|default(false) and form.allowIncrements.vars.attr.default is defined %}
-                {% set attrs = attrs|merge({'checked' : 'checked'}) %}
+                {% set attrs = attrs|merge({'checked' : ''}) %}
             {% endif %}
             {{ form_widget(form.allowIncrements, attrs) }}
             {{ form_label(form.allowIncrements) }}

@@ -55,6 +55,7 @@ define(function(require) {
             requestsOnlyContainer: '.sale-quoteproductrequest-only',
             errorMessage: 'Sorry, an unexpected error has occurred.',
             submitButton: 'button#save-and-transit',
+            customOffersPriceValueSelector: '.quote-lineitem-offers-price .currency-price-value input',
             allUnits: {},
             units: {},
             events: {
@@ -183,7 +184,7 @@ define(function(require) {
             this.$el
                 .on('change', this.options.customSellerNotes, _.bind(this.customerNoteDropdownChange, this))
                 .on('change', this.options.offersQuantitySelector, _.bind(this.updateProductSubPrice, this))
-                .on('change', this.options.offersPriceValueSelector, _.bind(this.updateProductSubPrice, this))
+                .on('change', this.options.customOffersPriceValueSelector, _.bind(this.updateProductSubPrice, this))
                 .on('change', this.options.productSelect, _.bind(this.onProductChanged, this))
                 .on('change', this.options.productReplacementSelect, _.bind(this.onProductChanged, this))
                 .on('change', this.options.typeSelect, _.bind(this.onTypeChanged, this))
@@ -515,17 +516,22 @@ define(function(require) {
             this.$el.find(this.options.productSkuLabel).text(productData.sku || '');
         },
         updateProductSubPrice: function() {
+        	var self = this;
         	var data = { } ;
-        	var $productSubPrice = this.$el.find(this.options.productSubPrice);
-        	var $offersQuantitySelector = this.$el.find(this.options.offersQuantitySelector);
-        	var $offersPriceValueSelector = this.$el.find(this.options.offersPriceValueSelector);
-        	 var subtotal = ($offersQuantitySelector.val() * $offersPriceValueSelector.val()).toFixed(3);
-        				$(".quote-lineitem-offers-item-add").hide();
-        				$(".quote-lineitem-offers-more-fields").hide();
-        				$(".fields-row td:nth-child(2)").hide();
-        	 $productSubPrice.text(subtotal);
+        	var widgets = self.$el.find(self.options.itemWidget);
         	
-        },
+            $.each(widgets, function(index, widget) {
+            	 var $productSubPrice = $(widget).find(self.options.productSubPrice);
+             	var $offersQuantitySelector = $(widget).find(self.options.offersQuantitySelector);
+             	var $offersPriceValueSelector = $(widget).find(self.options.customOffersPriceValueSelector);
+             	
+             	 var subtotal = ($offersQuantitySelector.val() * $offersPriceValueSelector.val()).toFixed(2);
+             	$(widget).find(".quote-lineitem-offers-more-fields").hide();
+             	$(widget).find(".quote-lineitem-offers-item-add").hide();
+             	$(widget).find(".fields-row td:nth-child(2)").hide();
+             	 $productSubPrice.text(subtotal);
+            });
+       },
         updateProductDetail: function() {
         	var data = { } ;
         	var productDetailObj = this.$el.find(this.options.productDetail);

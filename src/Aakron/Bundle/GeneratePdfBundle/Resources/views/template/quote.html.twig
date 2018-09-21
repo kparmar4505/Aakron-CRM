@@ -18,9 +18,8 @@
 
         </style>
     </head>
-    <body">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="overflow: visible;position: relative;font-family: 'Roboto Condensed', sans-serif;">
-            
+    <body style="top: 10px;position:relative;width:1028px;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="overflow: visible;position: relative;font-family: 'Roboto Condensed', sans-serif;">            
              <tr>
                 <td align="center" valign="middle">
                     <table border="0" cellpadding="0" cellspacing="0" style="background-color:#FFF;">                        
@@ -28,7 +27,7 @@
                             <td align="left" valign="middle" >
                                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                     <td align="left" valign="middle">
-										<div style="top: 65px;float: right;margin-right: 28%;position: sticky;">
+										<div style="top: 25px;position: fixed;left: 60%;">
 										<lable style="font-size: 18px;font-weight: 600">Quote Number</lable>
 										<lable style="padding-left: 10px;border: 0;font-size: 20px;color: #0d5cab;font-weight: normal">{{data.quote_id}}</lable>
 										</div>
@@ -236,22 +235,37 @@
                                                             <tbody><tr>
                                        <th style="border-bottom: 2px solid #DDD;border-right:2px solid #DDD;color: #ee352a;font-size: 18px;font-weight: 600;vertical-align: top;height: 45px" width="15%"> Item Number</th>
                                        <th style="border-bottom: 2px solid #DDD;border-right:2px solid #DDD;color: #ee352a;font-size: 18px;font-weight: 600;vertical-align: top;height: 45px" width="40%"> Description </th>
-                                       <th style="border-bottom: 2px solid #DDD;border-right:2px solid #DDD;color: #ee352a;font-size: 18px;font-weight: 600;vertical-align: top;height: 45px" width="15%"> Quantity</th>
-                                       <th style="border-bottom: 2px solid #DDD;border-right:2px solid #DDD;color: #ee352a;font-size: 18px;font-weight: 600;vertical-align: top;height: 45px" width="15%"> NET Price <br><span style="color:#000;font-weight: normal">(Each)</span> </th>
-                                       <th style="border-bottom: 2px solid #DDD;color: #ee352a;font-size: 18px;font-weight: 600;vertical-align: top;height: 45px" width="15%"> Value</th>
+                                       <th colspan="3">
+        	<table border="0" cellspacing="0" width="100%" ><tbody><tr>        	
+						<td style="border-bottom: 2px solid #DDD;border-right:2px solid #DDD;color: #ee352a;font-size: 18px;font-weight: 600;vertical-align: top;height: 45px" width="15%"> Quantity</td>
+                       <td style="border-bottom: 2px solid #DDD;border-right:2px solid #DDD;color: #ee352a;font-size: 18px;font-weight: 600;vertical-align: top;height: 45px" width="15%"> NET Price <br><span style="color:#000;font-weight: normal">(Each)</span> </td>
+                       <td style="border-bottom: 2px solid #DDD;color: #ee352a;font-size: 18px;font-weight: 600;vertical-align: top;height: 45px" width="15%"> Value</td>
+        	</tr></tbody></table>
+        </th>
+                                       
+                                       
                                                             
                                                            
                                                             
                                                             </tr>
-                                                            {% for products in data.grid_products %}
+                                                            
+                                                            {% for key,products in data.grid_products %}
 														       
 														        
 	<tr>
         <td style="color: #0d5cab;font-size: 20px;border-bottom: 2px solid #DDD;border-right:2px solid #DDD;text-align:left;padding-left:15px; " >{{products.sku}}</td>
         <td style="color: #0d5cab;font-size: 20px;border-bottom: 2px solid #DDD;border-right:2px solid #DDD;text-align:left;padding-left:15px; " >{{products.name}}</td>
-        <td style="color: #0d5cab;font-size: 20px;border-bottom: 2px solid #DDD;border-right:2px solid #DDD;text-align:left;padding-left:15px; " >{{products.quantity}}</td>
-        <td style="color: #0d5cab;font-size: 20px;border-bottom: 2px solid #DDD;border-right:2px solid #DDD;text-align:left;padding-left:15px; " >${{products.price}}</td>
-        <td style="color: #0d5cab;font-size: 20px;border-bottom: 2px solid #DDD;text-align:left;height:32px;padding-left:15px; " >${{products.sub_total}}</td>
+        <td colspan="3">
+        	<table border="0" cellspacing="0" width="100%" ><tbody>
+        	{% for key,value in products.price %}<tr>        	
+        	<td style="color: #0d5cab;font-size: 20px;border-bottom: 2px solid #DDD;border-right:2px solid #DDD;text-align:left;padding-left:15px; " width="15%" >{{products.quantity[key]}}</td>
+	        <td style="color: #0d5cab;font-size: 20px;border-bottom: 2px solid #DDD;border-right:2px solid #DDD;text-align:left;padding-left:15px; "  width="15%">${{products.price[key]}}</td>
+	        <td style="color: #0d5cab;font-size: 20px;border-bottom: 2px solid #DDD;text-align:left;height:32px;padding-left:15px; "  width="15%">${{products.sub_total[key]}}</td>
+        	</tr>
+        	{% endfor %} </tbody></table>
+        </td>
+        
+        
         
        
     </tr>													        

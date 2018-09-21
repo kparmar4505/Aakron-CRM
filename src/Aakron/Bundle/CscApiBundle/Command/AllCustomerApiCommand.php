@@ -48,8 +48,8 @@ class AllCustomerApiCommand extends ContainerAwareCommand implements CronCommand
     {
         
         $i = 1;
-        $k = 10;// batch of records
-
+        $k = 500;// batch of records
+        $_k=-500;
         $progressBar = new ProgressBar($output, 31000);
         $progressBar->start();
         $progressBar->setRedrawFrequency(1);
@@ -61,9 +61,9 @@ class AllCustomerApiCommand extends ContainerAwareCommand implements CronCommand
             $allCustomersDataJson = $this->getContainer()->get('api_caller')->call(new HttpGetJson($this->getContainer()->getParameter("all.customers.source.url"), array("record_from"=>$start,"record_to"=>$end)));
             
             $allCustomersData=$this->objectToArray($allCustomersDataJson);
-            if(count($allCustomersData)>10)
+            if(count($allCustomersData)>$k)
             {
-             $allCustomersData = array_slice($allCustomersData, -10, 10, true);
+                $allCustomersData = array_slice($allCustomersData, $_k, $k, true);
             }
 
             if(count($allCustomersData)<= 0)

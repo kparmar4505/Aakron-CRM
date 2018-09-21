@@ -34,11 +34,13 @@ class PdfController extends Controller
         $parameters = $this->getEntityData($entityName,$id);           
         
         $html = $this->generateHtmlForPdf($parameters);
- 
+    //    echo $html;exit;
         return new Response(            
                 $this->knpSnappy->getOutputFromHtml($html),200,array(                
                     'Content-Type'          => 'application/pdf',                
-                    'Content-Disposition'   => 'attachment; filename="'.$filename.'.pdf"'                
+                    'Content-Disposition'   => 'attachment; filename="'.$filename.'.pdf"'          
+                    
+//                    'Content-Disposition'   => 'inline; filename="'.$filename.'.pdf"'      
                 )            
             );
     }
@@ -62,7 +64,7 @@ class PdfController extends Controller
        $quote["additional_info"] = $parametersObject->getQuoteAdditionalNote()??"";
        $quote["products"] = array();
        $quote["address"] = $this->getAddress($parametersObject->getShippingAddress()??"");   
-   
+       
        foreach($parametersObject->getQuoteProducts() as $key=>$products)
        {           
            $productId=$products->getId();
@@ -75,25 +77,35 @@ class PdfController extends Controller
                       
            $productSlug = $this->getProductAPIData($quote["products"][$productId]["sku"]);
            
+          
            $quote["products"][$productId]["product_url"]=$this->getParameter("aakron_product_url").$productSlug;
            $customProductDataArray = $this->getProductData($productSlug);
            
            $quote["products"][$productId]["setup_charge"]= $customProductDataArray["setup_charge"]??"";
            $quote["products"][$productId]["pricint_includes"]= $customProductDataArray["pricint_includes"]??"";
-           foreach($products->getQuoteProductOffers() as $productOffers)
+           
+           if(!$products->getProduct())
            {
-               $productArray["quantity"]=$productOffers->getQuantity()??"";
-               $productArray["price"]=$productOffers->getPrice()->getValue()??"";
+               $quote["products"][$productId]["product_url"]="#";
+               $quote["products"][$productId]["image"]=$this->getParameter("aakron_crm_url")."pdf-assets/images/no-image.png";
+           }
+           foreach($products->getQuoteProductOffers() as $key=>$productOffers)
+           {
+               $productArray["quantity"][$key]=$productOffers->getQuantity()??"";
+               $productArray["price"][$key]=$productOffers->getPrice()->getValue()??"";
                $productArray["currency"]=$productOffers->getPrice()->getCurrency()??"";
                $productArray["name"]=$products->getProductName()??"";
-               $productArray["sku"]=$productOffers->getProductSku()??"";
-               $productArray["sub_total"]=($productArray["price"])*($productArray["quantity"]);
-
-               $quote["grid_products"][$productId] = $productArray;
-              
-               unset($productArray);               
+               $productArray["sku"]=$productOffers->getProductSku()??$products->getProductSku();               
+               
+               $productArray["price"][$key] = number_format($productArray["price"][$key],4);
+               $productArray["sub_total"][$key]=($productArray["price"][$key])*($productArray["quantity"][$key]);
+               $productArray["sub_total"][$key] = number_format($productArray["sub_total"][$key],2);
+               
            }
-
+           
+           $quote["grid_products"][$productId] = $productArray;
+         
+           unset($productArray);               
        }
        $poid=0;
 

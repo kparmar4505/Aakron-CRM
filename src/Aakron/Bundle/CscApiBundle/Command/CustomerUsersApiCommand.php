@@ -48,8 +48,8 @@ class CustomerUsersApiCommand extends ContainerAwareCommand implements CronComma
     {
         
         $page=1;
-        $records=10;
-        $progressBar = new ProgressBar($output, 10000);
+        $records=100;
+        $progressBar = new ProgressBar($output, 30000);
         $progressBar->start();
         $progressBar->setRedrawFrequency(1);
         while (1) {

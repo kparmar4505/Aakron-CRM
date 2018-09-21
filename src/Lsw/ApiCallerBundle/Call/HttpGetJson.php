@@ -9,6 +9,12 @@ use Lsw\ApiCallerBundle\Call\ApiCallInterface;
  */
 class HttpGetJson extends CurlCall implements ApiCallInterface
 {
+    public function __destruct()
+    {
+        unset($this->requestData);
+        unset($this->responseObject);
+        unset($this->asAssociativeArray);
+    }
     /**
     * {@inheritdoc}
     */

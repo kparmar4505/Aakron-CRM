@@ -26,6 +26,5 @@ class ExtendCustomerEntity implements Migration
                 'length' => 100
             ]
             );
-        
     }
 }
