@@ -122,12 +122,42 @@
         {{ form_widget(form.quoteProductOffers) }}
         {{ form_errors(form.quoteProductOffers) }}
     </td>
-    <td class="quote-lineitem-product-detail" data-url="{{aakron_crm_url}}app_dev.php/admin/product-details">
-    		
+    <td class="quote-lineitem-product-detail" data-url="{{aakron_crm_url}}admin/product-details">
+    	<div class="fields-row quote-lineitem-product-row">
+            <div class="js-setup-charge-html">                      
+                {{ form_label(form.aaSetupCharge) }}  
+                <select class="js-setupcharge-dropdown" name="js-setupcharge-dropdown">
+	         	    <option value="">Select Setup Charge</option>
+	         		<option value="FREE">FREE</option>
+					<option value="$25.000">$25.000</option>
+					<option value="$30.000">$30.000</option>
+					<option value="$35.000">$35.000</option>
+					<option value="$40.000">$40.000</option>
+					<option value="$45.000">$45.000</option>
+					<option value="$50.000">$50.000</option>
+					<option value="$30.000 (G)every 3">$30.000 (G)every 3</option>
+					<option value="$60.000 (G)">$60.000 (G)</option>
+					<option value="$85.000 (G)">$85.000 (G)</option>
+	         	</select><br/><br/>     
+	         	{{ form_widget(form.aaSetupCharge, {attr: attr|merge({class: 'js-setup-charge'})}) }}
+            </div>
+       		<div class="js-pricing-included-html">
+       			{{ form_label(form.aaPricingIncluded) }}
+       			<select class="js-pricingincluded-dropdown" name="js-pricingincluded-dropdown">
+	         	    <option value="">Select Setup Charge</option>
+	         		<option value="A one color silk screen imprint on one side 1">A one color silk screen imprint on one side 1</option>
+					<option value="A one color silk screen imprint on one side 2">A one color silk screen imprint on one side 2</option>
+					<option value="A one color silk screen imprint on one side 2">A one color silk screen imprint on one side 3</option>
+					<option value="A one color silk screen imprint on one side 3">A one color silk screen imprint on one side 4</option>
+	         	</select><br/><br/>                     
+	         	{{ form_widget(form.aaPricingIncluded, {attr: attr|merge({class: 'js-pricing-included'})}) }}
+            </div>
+        </div>     			
     </td>    
     
     <td class="quote-lineitem-notes">
          <div class="custome-seller-notes">
+          {{ form_label(form.comment) }}
          	<select class="js-seller-notes"  multiple>
          	    <option value="">Select Seller Note</option>
          		<option value="Made in the USA">Made in the USA</option>
@@ -150,8 +180,7 @@
                 {{ form_widget(form.commentCustomer) }}
             </div>
         {% endif %}#}
-         <div class="quote-lineitem-notes-seller-active">
-	            {{ form_label(form.comment) }}
+         <div class="quote-lineitem-notes-seller-active">	           
 	            {{ form_widget(form.comment) }}
                 {{ form_errors(form.comment) }}
         </div>
@@ -173,13 +202,11 @@
                         <td class="quote-lineitem-requested-quantity">
                             {{ child.quantity }}
                         </td>
-
                         <td class="quote-lineitem-requested-unit">
                             {% if oro_is_unit_code_visible(child.productUnit.code) %}
                                 {{ child.productUnit }}
                             {% endif %}
                         </td>
-
                         <td class="quote-lineitem-requested-price">
                             {% if child.price is not empty %}
                                 {{ child.price|oro_format_price }}

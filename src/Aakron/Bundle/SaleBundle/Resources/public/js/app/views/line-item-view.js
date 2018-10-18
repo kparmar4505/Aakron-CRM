@@ -65,7 +65,9 @@ define(function(require) {
             },
             productDetail: '.quote-lineitem-product-detail',
             customSellerNotes: '.custome-seller-notes',
-            productSubPrice: '.js-sub-total-price'	
+            productSubPrice: '.js-sub-total-price',
+           	customSetupChargeDropdown: '.quote-lineitem-product-detail .js-setup-charge-html',	
+           	customPricingIncludedDropdown: '.quote-lineitem-product-detail .js-pricing-included-html'
         },
 
         /**
@@ -179,7 +181,10 @@ define(function(require) {
             this.$notesContainer = this.$el.find(this.options.notesContainer);
             this.$sellerNotesContainer = this.$el.find(this.options.sellerNotesContainer);
             this.$requestsOnlyContainer = this.$el.find(this.options.requestsOnlyContainer);
-          
+            
+            
+//            this.$requestsOnlyContainer = this.$el.find(this.options.customSetupChargeDropdown).find(".js-setupcharge-dropdown");
+//          console.log(this.$requestsOnlyContainer.val())
            
             this.$el
                 .on('change', this.options.customSellerNotes, _.bind(this.customerNoteDropdownChange, this))
@@ -193,11 +198,13 @@ define(function(require) {
                 .on('click', this.options.freeFormLink, _.bind(this.onFreeFormLinkClick, this))
                 .on('click', this.options.productSelectLink, _.bind(this.onProductSelectLinkClick, this))
                 .on('content:changed', _.bind(this.onContentChanged, this))
+                .on('change', this.options.customSetupChargeDropdown, _.bind(this.setupChargeDropdownChange, this))
+                .on('change', this.options.customPricingIncludedDropdown, _.bind(this.pricingIncludedDropdownChange, this))
                 
             ;
             this.updateProductSubPrice();
             if(this.$el.find(this.options.productSkuLabel).text()){
-            	 this.updateProductDetail();
+            	// this.updateProductDetail();
             }
          
 
@@ -511,6 +518,21 @@ define(function(require) {
         	this.$notesContainer.find('.quote-lineitem-notes-seller-active').find("textarea").text(selectedValues);
 
         },
+        setupChargeDropdownChange: function(){
+        	var chagedValue = this.find('select[name=js-setupcharge-dropdown]').val();       	        	
+        	this.find('.js-setup-charge').val(chagedValue);
+        },
+        pricingIncludedDropdownChange: function(){
+        	var chagedValue = this.find('select[name=js-pricingincluded-dropdown]').val();       	 
+        	
+        	/*************
+        	var chagedValue = "";
+        	this.find("select[name=js-pricingincluded-dropdown] :selected").each(function() {
+        		chagedValue += $(this).val() + "\n";
+        	});        	
+        	/************/
+        	this.find('.js-pricing-included').val(chagedValue);
+        },
         updateSkuLabel: function() {
             var productData = this.$el.find(this.options.productSelect).inputWidget('data') || {};
             this.$el.find(this.options.productSkuLabel).text(productData.sku || '');
@@ -535,8 +557,7 @@ define(function(require) {
         updateProductDetail: function() {
         	var data = { } ;
         	var productDetailObj = this.$el.find(this.options.productDetail);
-        	$( productDetailObj).html("");
-        	var url = $( productDetailObj).data("url");
+        	var url = $( productDetailObj).data("url");        	
         	
             $.ajax({
 
@@ -549,8 +570,7 @@ define(function(require) {
                	 	$.each(data.feature_details, function( index, myvalue ) {     
 	               	 	  if(myvalue.label == "Pricing Includes")
 	     				  {
-		               	 	var $newdiv1 = $( "<p><b>"+myvalue.label + ":</b> " + myvalue.value+"</p>" );
-		              		 $( productDetailObj).append($newdiv1);
+	               	 		  $( productDetailObj).find(".js-pricing-included-html").find(".js-pricing-included").val(myvalue.value);
 	     				  }
 	               		 
                		});
@@ -566,8 +586,7 @@ define(function(require) {
 	               			$.each(myvalue.charges, function( childIndex, childValue ) {
 	           			 		if(childIndex == "SETUP_CHARGE")
 	           			 		{
-			               			var $newdiv1 = $( "<p><b>"+childValue.label + ": </b><input type='text' value='"+childValue.charge+"' id='abc' width='150' />"+"</p>" );
-			               			$( productDetailObj).append($newdiv1);
+	           			 			$( productDetailObj).find(".js-setup-charge-html").find(".js-setup-charge").val("$"+childValue.charge);
 		               			}
 	               			});	               		  	               		 
 		           		});
@@ -575,45 +594,6 @@ define(function(require) {
                	 	{
                	 		
                	 	}
-                	
-                	
-//                	/**** Feature Detail *******/
-//               	 	$.each(data.feature_details, function( index, myvalue ) {     
-//	               	 	  if(myvalue.label == "Pricing Includes")
-//	     				  {
-//		               	 	var $newdiv1 = $( "<p><b>"+myvalue.label + ":</b> " + myvalue.value+"</p>" );
-//		               	 $( productDetailObj).append($newdiv1);
-//		              		//$( productDetailObj).find(".js-pricing-included-html").html($newdiv1);
-//		              		//$( productDetailObj).find(".js-pricing-included").val(myvalue.value);
-//		              		//$( productDetailObj).find(".js-pricing-included-html").attr("style","width:200px;word-wrap: break-word;")
-//	     				  }
-//	               		 
-//               		});
-//               	    /**** Feature Detail *******/
-//	               	
-//               	 	/**** Product Detail *******
-//               	 	$( productDetailObj).html(data.basic_information.description).find('br').remove();
-//	               	/**** Product Detail *******/
-//               	    /**** Product charges *******/
-//               	 	try
-//               	 	{
-//	               	 	$.each(data.imprint_information.imprint_method_information, function( index, myvalue ) { 
-//	               			$.each(myvalue.charges, function( childIndex, childValue ) {console.log("====")
-//	           			 		if(childIndex == "SETUP_CHARGE")
-//	           			 		{
-//	           			 			//alert($( productDetailObj).find(".js-setup-charge").attr("name"))
-//			               			var $newdiv1 = $( "<p><b>"+childValue.label + ": </b><input type='text' value='"+childValue.charge+"' id='abc' width='150' />"+"</p>" );
-//			               			$( productDetailObj).append($newdiv1);
-////	           			 			$( productDetailObj).find(".js-setup-charge").val(childValue.charge);
-////	           			 			$( productDetailObj).find(".js-setup-charge").attr("style","width:100px")
-//		               			}
-//	               			});	               		  	               		 
-//		           		});
-//               	 	}catch(e)
-//               	 	{
-//               	 		
-//               	 	}
-     	 
 	               	/**** Product charges *******/
                 },
                 error: function (xhr, textStatus, errorThrown) {

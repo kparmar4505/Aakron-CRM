@@ -10,3 +10,10 @@ services:
 #        class: Aakron\Bundle\SaleBundle\Form\Extension\QuoteProductTypeExtension
 #        tags:
 #            - { name: form.type_extension, extended_type: Oro\Bundle\SaleBundle\Form\Type\QuoteProductType }
+    aakron_sale.service.quote_request_handler:
+        class: 'Aakron\Bundle\SaleBundle\Model\CustomQuoteRequestHandler'
+        arguments:
+            - "@doctrine"
+            - "@request_stack"
+            - '%oro_account.entity.account.class%'
+            - '%oro_contact.entity.class%'

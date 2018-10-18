@@ -1,7 +1,4 @@
 config:
     paths:
         'orosale/js/app/views/line-item-view': 'bundles/aakronsale/js/app/views/line-item-view.js'
-
-config:
-    paths:
         'aakronsale/js/app/views/custom-quote-view': 'bundles/aakronsale/js/app/views/custom-quote-view.js'        

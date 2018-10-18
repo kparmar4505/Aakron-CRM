@@ -40,8 +40,8 @@ class DefaultController extends Controller
     public function myindexAction()
     {
         $test = $this->get('aakron_import_customer_api')->generatAuthentication();
-        echo "<pre>";
-        print_r($test);exit;
+//         echo "<pre>";
+//         print_r($test);exit;
         return $this->render('AakronCscApiBundle:Default:index.html.twig');
     }
     /**

@@ -11,6 +11,11 @@ oro:
                 label: 'FOB' 
             quote_status:
                 label: 'Quote Status' 
+        quoteproduct:
+            aa_setup_charge:
+                label: 'Setup Charge' 
+            aa_pricing_included:
+                label: 'Pricing Included'                               
 #    paymentterm:
 #        channel_type:
 #            label: Additional Notes

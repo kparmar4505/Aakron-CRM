@@ -69,9 +69,18 @@
                 {{ form_row(form.customer) }}
                 {{ form_row(form.customerUser) }}
             </div>
+          {#  <br>
+             OR #}
         </div>
-        
-        
+		{#<div data-page-component-module="aakronsale/js/app/components/account-related-data-component"
+             data-page-component-options="{{ {formName: form.vars.name}|json_encode }}">
+            <div data-page-component-module="aakroncustomer/js/app/components/account-contact-selection-component">
+                 {{ form_row(form.Accounts, { 'attr' : { 'class' : 'accounts-account-select' }}) }}           
+                 {{ form_row(form.AccountContacts, {'attr' : { 'class' : 'accounts-contact-select' }}) }}
+            </div>
+        </div> 
+        {{ form_row(form.Accounts, { 'attr' : { 'class' : 'accounts-account-select' }}) }}           
+        {{ form_row(form.AccountContacts, {'attr' : { 'class' : 'accounts-contact-select' }}) }} #} 
     {% endset %}
 
     {% set lineItems %}

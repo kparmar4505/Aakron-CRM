@@ -38,9 +38,9 @@ class PdfController extends Controller
         return new Response(            
                 $this->knpSnappy->getOutputFromHtml($html),200,array(                
                     'Content-Type'          => 'application/pdf',                
-                    'Content-Disposition'   => 'attachment; filename="'.$filename.'.pdf"'          
+//                     'Content-Disposition'   => 'attachment; filename="'.$filename.'.pdf"'          
                     
-//                    'Content-Disposition'   => 'inline; filename="'.$filename.'.pdf"'      
+                   'Content-Disposition'   => 'inline; filename="'.$filename.'.pdf"'      
                 )            
             );
     }
@@ -49,11 +49,11 @@ class PdfController extends Controller
         $parametersArray = array();
        $quoteClass = $this->getParameter("entity_manager.".$entityName);
        $parametersObject = $this->getDoctrine()->getRepository($quoteClass)->getQuote($id);
-       //dump($parametersObject);exit;
+    //   dump($parametersObject);exit;
        $quote["customer_number"] = $parametersObject->getCustomer()->getAccountNumber()??"";
        $quote["quote_id"] = $parametersObject->getId()??"0";
        $quote["company"] = $parametersObject->getCustomer()->getName()??"";
-       $quote["contact_name"] = $this->getContactName($parametersObject->getCustomerUser()??"");
+       $quote["contact_name"] = "";//$this->getContactName($parametersObject->getCustomerUser()??"");
        $quote["email"] = $parametersObject->getEmail()??"";
        $quote["address"] = "";
        $quote["phone"] = $this->getCustomerPhone($parametersObject->getShippingAddress()??"");   
@@ -67,22 +67,22 @@ class PdfController extends Controller
        
        foreach($parametersObject->getQuoteProducts() as $key=>$products)
        {           
-           $productId=$products->getId();
+           $productId=$products->getId()??"0";
+           $productSku = $products->getProductSku()??"";
+           $productSlug = $this->getProductAPIData($productSku);
            
-           $quote["products"][$productId]["sku"]= $products->getProductSku()??"";
+           $quote["products"][$productId]["sku"]= $productSku;
            $quote["products"][$productId]["comment"] = $products->getComment()??"";
            $quote["products"][$productId]["id"] = $products->getId()??"";
            $quote["products"][$productId]["name"]=$products->getProductName()??"";
            $quote["products"][$productId]["image"]=$this->getProductImage($quote["products"][$productId]["sku"])??"";
-                      
-           $productSlug = $this->getProductAPIData($quote["products"][$productId]["sku"]);
-           
-          
            $quote["products"][$productId]["product_url"]=$this->getParameter("aakron_product_url").$productSlug;
-           $customProductDataArray = $this->getProductData($productSlug);
+           $quote["products"][$productId]["setup_charge"]=$products->getAaSetupCharge()??"";
+           $quote["products"][$productId]["pricint_includes"]= $products->getAaPricingIncluded()??"";
            
-           $quote["products"][$productId]["setup_charge"]= $customProductDataArray["setup_charge"]??"";
-           $quote["products"][$productId]["pricint_includes"]= $customProductDataArray["pricint_includes"]??"";
+//            $customProductDataArray = $this->getProductData($productSlug);           
+//            $quote["products"][$productId]["setup_charge"]= $customProductDataArray["setup_charge"]??"";
+//            $quote["products"][$productId]["pricint_includes"]= $customProductDataArray["pricint_includes"]??"";
            
            if(!$products->getProduct())
            {
@@ -148,12 +148,12 @@ class PdfController extends Controller
      
         return implode(" ",$poweredBy);
     }
-    private function getContactName($ustomerUser)
+    private function getContactName($customerUser)
     {
         $customer = array();
-        $customer["fname"] = $ustomerUser->getFirstName()??"";
-        $customer["mname"] = $ustomerUser->getMiddleName()??"";
-        $customer["lname"] = $ustomerUser->getLastName()??"";
+        $customer["fname"] = $customerUser->getFirstName()??"";
+        $customer["mname"] = $customerUser->getMiddleName()??"";
+        $customer["lname"] = $customerUser->getLastName()??"";
         $customer =  array_filter($customer);
         
         return implode(" ",$customer);

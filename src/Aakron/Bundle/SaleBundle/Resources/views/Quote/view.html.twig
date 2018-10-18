@@ -45,7 +45,7 @@
                         <th><span>{{ 'oro.sale.quoteproduct.column.product'|trans }}</span></th>
                         <th class="quote-line_item-quantity"><span>{{ 'oro.sale.quoteproductoffer.quantity.label'|trans }}</span></th>
                         <th class="quote-line_item-price"><span>{{ 'oro.sale.quoteproductoffer.price.label'|trans }}</span></th>
-                        <th><span>{{ 'oro.sale.quoteproduct.comment_customer.label'|trans }}</span></th>
+                       {# <th><span>{{ 'oro.sale.quoteproduct.comment_customer.label'|trans }}</span></th>#}
                         <th><span>{{ 'oro.sale.quoteproduct.comment.label'|trans }}</span></th>
                     </tr>
                 </thead>
@@ -67,19 +67,19 @@
                                 </td>
                             {% endif %}
                             <td class="quote-line_item-quantity quote-line_item-quantity-{% if loop.first %}first{% else %}not_first{% endif %}">
-                                {% if oro_is_unit_code_visible(quoteProductOffer.productUnit.code) %}
+                                {{ quoteProductOffer.quantity }}
+                                {#% if oro_is_unit_code_visible(quoteProductOffer.productUnit.code) %}
                                     {{ quoteProductOffer.quantity|oro_format_short_product_unit_value(quoteProductOffer.productUnit) }}
                                 {% else %}
                                     {{ quoteProductOffer.quantity }}
-                                {% endif %}
-
-                                {% if quoteProductOffer.allowIncrements %}{{ 'oro.sale.quoteproductoffer.allow_increments.label'|trans }}{% endif %}
+                                {% endif %}								
+                                {% if quoteProductOffer.allowIncrements %}{{ 'oro.sale.quoteproductoffer.allow_increments.label'|trans }}{% endif %#}
                             </td>
                             <td class="quote-line_item-price quote-line_item-price-{% if loop.first %}first{% else %}not_first{% endif %}">
                                 {{ quoteProductOffer.price|oro_format_price }}
                             </td>
                             {% if loop.first %}
-                                <td  class="quote-line_item-target_notes" rowspan="{{ numSubItems }}">{{ quoteProduct.commentCustomer }}</td>
+                                {#<td  class="quote-line_item-target_notes" rowspan="{{ numSubItems }}">{{ quoteProduct.commentCustomer }}</td>#}
                                 <td class="quote-line_item-target_notes" rowspan="{{ numSubItems }}">{{ quoteProduct.comment }}</td>
                             {% endif %}
                         </tr>
@@ -146,10 +146,10 @@
         'subblocks': [{'data' : [shippingAddress]}]
     }]) %}
 
-    {% set dataBlocks = dataBlocks|merge([{
+    {#% set dataBlocks = dataBlocks|merge([{
         'title': 'oro.sale.quote.sections.shipping_information'|trans,
         'subblocks': [{'data' : [shippingInformation]}]
-    }]) %}
+    }]) %#}
 
     {% set data = {'dataBlocks': dataBlocks} %}
     {{ parent() }}
