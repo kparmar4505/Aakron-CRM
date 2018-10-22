@@ -1,4 +1,7 @@
 oro:
+    order:
+        shipping_address:
+            label: 'Customer Shipping Address'
     sale:
         quote:
             additional_notes:
