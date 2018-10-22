@@ -66,8 +66,8 @@ define(function(require) {
             productDetail: '.quote-lineitem-product-detail',
             customSellerNotes: '.custome-seller-notes',
             productSubPrice: '.js-sub-total-price',
-           	customSetupChargeDropdown: '.quote-lineitem-product-detail .js-setup-charge-html',	
-           	customPricingIncludedDropdown: '.quote-lineitem-product-detail .js-pricing-included-html'
+           	customSetupChargeDropdown: '.quote-lineitem-product-detail .js-setup-charge-html select',	
+           	customPricingIncludedDropdown: '.quote-lineitem-product-detail .js-pricing-included-html select'
         },
 
         /**
@@ -519,7 +519,7 @@ define(function(require) {
 
         },
         setupChargeDropdownChange: function(){
-        	var chagedValue = this.find('select[name=js-setupcharge-dropdown]').val();       	        	
+        	var chagedValue = this.find('select[name=js-setupcharge-dropdown]').val();	
         	this.find('.js-setup-charge').val(chagedValue);
         },
         pricingIncludedDropdownChange: function(){
