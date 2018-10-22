@@ -144,11 +144,13 @@
        		<div class="js-pricing-included-html">
        			{{ form_label(form.aaPricingIncluded) }}
        			<select class="js-pricingincluded-dropdown" name="js-pricingincluded-dropdown">
-	         	    <option value="">Select Setup Charge</option>
-	         		<option value="A one color silk screen imprint on one side 1">A one color silk screen imprint on one side 1</option>
-					<option value="A one color silk screen imprint on one side 2">A one color silk screen imprint on one side 2</option>
-					<option value="A one color silk screen imprint on one side 2">A one color silk screen imprint on one side 3</option>
-					<option value="A one color silk screen imprint on one side 3">A one color silk screen imprint on one side 4</option>
+	         	    <option value="">Select Pricing Included</option>
+	         		<option value="a one color imprint on one side.">a one color imprint on one side.</option>
+					<option value="a one color imprint on one or two sides. Unless specified orders will be set up as a one sided imprint.">a one color imprint on one or two sides. Unless specified orders will be set up as a one sided imprint.</option>
+					<option value="same straight line ad copy and scale printed on both sides of the stick in one color ink.">same straight line ad copy and scale printed on both sides of the stick in one color ink.</option>
+					<option value="a one color imprint on four panels (two panels- English Scales, two panels- same straight- line ad copy). Leather strap is attached.">a one color imprint on four panels (two panels- English Scales, two panels- same straight- line ad copy). Leather strap is attached.</option>
+		         	<option value="a full color digital imprint on one side.">a full color digital imprint on one side.</option>
+		         	<option value="a full color digital imprint on one or two sides.  Unless specified orders will be set up as a one sided imprint.">a full color digital imprint on one or two sides.  Unless specified orders will be set up as a one sided imprint.</option>
 	         	</select><br/><br/>                     
 	         	{{ form_widget(form.aaPricingIncluded, {attr: attr|merge({class: 'js-pricing-included'})}) }}
             </div>
