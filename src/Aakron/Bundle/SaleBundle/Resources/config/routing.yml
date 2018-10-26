@@ -1,7 +1,7 @@
 #aakron_sale_homepage:
 #    path:     /
 #    defaults: { _controller: AakronSaleBundle:Default:index }
-oro_sale_quote_ajax:
-    resource:     "@AakronSaleBundle/Controller/AjaxQuoteController.php"
-    type:         annotation
-    prefix:       /quote
+#oro_sale_quote_ajax:
+#    resource:     "@AakronSaleBundle/Controller/AjaxQuoteController.php"
+#    type:         annotation
+#    prefix:       /quote
