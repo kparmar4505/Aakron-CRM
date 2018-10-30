@@ -14,6 +14,25 @@ class ExtendQuote
     {
         parent::_construct();
     }
+    /**
+     * A skeleton method for the getter. You can add it to use autocomplete hints from the IDE.
+     * The real implementation of this method is auto generated.
+     *
+     * @return string
+     */
+    public function getAdditionalNote()
+    {
+    }
+    
+    /**
+     * A skeleton method for the setter. You can add it to use autocomplete hints from the IDE.
+     * The real implementation of this method is auto generated.
+     *
+     * @param string $additionalNote
+     */
+    public function setAdditionalNote($auoteAdditionalNote)
+    {
+    }
     
     /**
      * A skeleton method for the getter. You can add it to use autocomplete hints from the IDE.
